@@ -24,7 +24,7 @@ class DashboardView extends GetView<DashboardController> {
             .sizeOf(context)
             .height,
         decoration: const BoxDecoration(
-            image: DecorationImage(image: AssetImage(Assets.imagesHomeBg))),
+            image: DecorationImage(image: AssetImage(Assets.imagesAppBg))),
         child: SafeArea(
             child: Scaffold(
               body: IndexedStack(
@@ -38,7 +38,7 @@ class DashboardView extends GetView<DashboardController> {
                       decoration: BoxDecoration(
                         color: primary,
                         borderRadius: BorderRadius.circular(16)
-                        
+
                       ),
                       child: TabBar(
                           onTap: (x) {
@@ -104,11 +104,11 @@ class DashboardView extends GetView<DashboardController> {
                 isSelected? CommonText.bold(label,color: isSelected? onPrimaryContainer:onPrimary):Container(),
               ],
             )),
-        isSelected? const Positioned(
+        isSelected?  Positioned(
           top: 0.0,
           left: 0.0,
           right: 0.0,
-          bottom: 72,// Align right to the container's edge
+          bottom: context.height*0.084,// Align right to the container's edge
           child: ClipRect( // Clip the divider to prevent overflowing
             child: Divider(color: onPrimaryContainer, thickness: 3),
           ),

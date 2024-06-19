@@ -5,7 +5,7 @@ import 'package:southwaltoncarts_customer/app/routes/app_pages.dart';
 import 'package:southwaltoncarts_customer/app/theme/theme.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_button.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_images.dart';
-import 'package:southwaltoncarts_customer/app/utils/common_inputtext_field.dart';
+import 'package:southwaltoncarts_customer/app/utils/common_input_text_field.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_text_view.dart';
 import 'package:southwaltoncarts_customer/app/utils/strings.dart';
 
@@ -84,7 +84,7 @@ class LoginView extends GetView<LoginController> {
                   );
                 }).marginOnly(bottom: context.height * 0.024),
                 CommonButton(onPressed: () {
-                  Get.toNamed(Routes.HOME);
+                  Get.toNamed(Routes.DASHBOARD);
                 }, label: Strings.login,).marginOnly(
                     bottom: context.height * 0.01),
                 Row(

@@ -7,7 +7,7 @@ import 'package:southwaltoncarts_customer/app/utils/common_images.dart';
 import '../../../../generated/assets.dart';
 import '../../../theme/theme.dart';
 import '../../../utils/common_button.dart';
-import '../../../utils/common_inputtext_field.dart';
+import '../../../utils/common_input_text_field.dart';
 import '../../../utils/common_text_view.dart';
 import '../../../utils/strings.dart';
 import '../controllers/forgot_password_controller.dart';

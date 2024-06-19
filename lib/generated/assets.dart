@@ -13,6 +13,15 @@ class Assets {
   static const String imagesDividerLine2 = 'assets/images/divider_line2.png';
   static const String imagesDrawerBack = 'assets/images/drawer_back.png';
   static const String imagesDriver = 'assets/images/driver.png';
+  static const String imagesGolfCart = 'assets/images/golf_cart.png';
+  static const String imagesGolfCart1 = 'assets/images/golf_cart1.png';
+  static const String imagesGolftCart2 = 'assets/images/golft_cart2.png';
+  static const String imagesGolftCart3 = 'assets/images/golft_cart3.png';
+  static const String imagesGolftCart4 = 'assets/images/golft_cart4.png';
+  static const String imagesGolftCart5 = 'assets/images/golft_cart5.png';
+  static const String imagesGolftCart6 = 'assets/images/golft_cart6.png';
+  static const String imagesGolftCart7 = 'assets/images/golft_cart7.png';
+  static const String imagesGolftCart8 = 'assets/images/golft_cart8.png';
   static const String imagesHomeBg = 'assets/images/home_bg.png';
   static const String imagesSwcLogo = 'assets/images/swc_logo.png';
   static const String imagesTruck = 'assets/images/truck.png';
@@ -20,9 +29,20 @@ class Assets {
   static const String svgEyeClosed = 'assets/svg/eye_closed.svg';
   static const String svgIcBack = 'assets/svg/ic_back.svg';
   static const String svgIcBell = 'assets/svg/ic-bell.svg';
+  static const String svgIcCall = 'assets/svg/ic_call.svg';
+  static const String svgIcEdit = 'assets/svg/ic_edit.svg';
+  static const String svgIcFile = 'assets/svg/ic_file.svg';
+  static const String svgIcFileView = 'assets/svg/ic_file_view.svg';
+  static const String svgIcFilter = 'assets/svg/ic_filter.svg';
   static const String svgIcLock = 'assets/svg/ic_lock.svg';
   static const String svgIcMail = 'assets/svg/ic_mail.svg';
+  static const String svgIcMarker = 'assets/svg/ic_marker.svg';
   static const String svgIcMessageSend = 'assets/svg/ic_message_send.svg';
+  static const String svgIcModify = 'assets/svg/ic_modify.svg';
   static const String svgIcPassword = 'assets/svg/ic_password.svg';
+  static const String svgIcPerson = 'assets/svg/ic_person.svg';
+  static const String svgIcReload = 'assets/svg/ic_reload.svg';
+  static const String svgIcSearch = 'assets/svg/ic_search.svg';
+  static const String svgUser = 'assets/svg/user.svg';
 
 }

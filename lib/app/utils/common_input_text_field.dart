@@ -32,11 +32,12 @@ class CommonTextField extends StatelessWidget {
   final BoxConstraints iconConstraints;
   final String obscuringCharacter;
   final Iterable<String>? autofillHints;
-  final bool isCanSee;
+  final bool isCanSee,isBoxView;
   final Widget Function(BuildContext, {required int currentLength, required bool isFocused, required int? maxLength})? buildCounter;
   final TextCapitalization? textCapitalization;
   final Color? borderColor;
   final Color? bgColor;
+  final Color? textColor;
   final double mPadding;
 
   const CommonTextField({
@@ -71,15 +72,17 @@ class CommonTextField extends StatelessWidget {
     this.textCapitalization,
     this.borderColor = Colors.transparent,
     this.bgColor = Colors.transparent,
-    this.mPadding = 0
+    this.textColor = primary,
+    this.mPadding = 0,
+    this.isBoxView = false
 
   }) : _fieldKey = globalKey;
 
   @override
   Widget build(BuildContext context) {
 
-    //var borderStyle = OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: borderColor!, width: 0.0));
-    //var focusedBorderStyle = OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide(color: borderColor!, width: 0.0));
+    var borderStyle = OutlineInputBorder(borderRadius: BorderRadius.circular(20), borderSide: BorderSide(color: borderColor!, width: 0.0));
+    var focusedBorderStyle = OutlineInputBorder(borderRadius: BorderRadius.circular(20), borderSide: BorderSide(color: borderColor!, width: 0.0));
 
 
     return Stack(
@@ -100,7 +103,7 @@ class CommonTextField extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           textCapitalization: textCapitalization ?? TextCapitalization.none,
           buildCounter: buildCounter,
-          style: const TextStyle(color:  primary, fontWeight: FontWeight.w500, fontSize: 14, fontFamily: mFontFamily),
+          style:  TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 14, fontFamily: mFontFamily),
           textAlign: textAlign,
           maxLines: maxLines,
           minLines: minLines,
@@ -120,19 +123,19 @@ class CommonTextField extends StatelessWidget {
             labelStyle: const TextStyle(color: onPrimary,fontWeight: FontWeight.w500,fontSize: 16,fontFamily: mFontFamily),
             hintStyle: TextStyle(color: onSurfaceVariant.withOpacity(0.7), fontWeight: FontWeight.w500, fontSize: 12, fontFamily: mFontFamily),
             border:   OutlineInputBorder(borderSide: const BorderSide(color: onPrimary,width: 1),borderRadius: BorderRadius.circular(20)),
-            errorBorder:  OutlineInputBorder(borderSide: const BorderSide(color: onPrimary,width: 1),borderRadius: BorderRadius.circular(20)),
-            focusedBorder:  OutlineInputBorder(borderSide: const BorderSide(color: onPrimary,width: 1),borderRadius: BorderRadius.circular(20)),
-            focusedErrorBorder :  OutlineInputBorder(borderSide: const BorderSide(color: onPrimary,width: 1),borderRadius: BorderRadius.circular(20)),
-            enabledBorder:  OutlineInputBorder(borderSide: const BorderSide(color: onPrimary,width: 1),borderRadius: BorderRadius.circular(20)),
+            errorBorder: isBoxView? borderStyle : OutlineInputBorder(borderSide: const BorderSide(color: onPrimary,width: 1),borderRadius: BorderRadius.circular(20)),
+            focusedBorder:isBoxView? focusedBorderStyle :  OutlineInputBorder(borderSide: const BorderSide(color: onPrimary,width: 1),borderRadius: BorderRadius.circular(20)),
+            focusedErrorBorder :  isBoxView? focusedBorderStyle :OutlineInputBorder(borderSide: const BorderSide(color: onPrimary,width: 1),borderRadius: BorderRadius.circular(20)),
+            enabledBorder: isBoxView? borderStyle : OutlineInputBorder(borderSide: const BorderSide(color: onPrimary,width: 1),borderRadius: BorderRadius.circular(20)),
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
-            fillColor: Colors.transparent,
-            filled: false,
+            fillColor: isBoxView?onPrimary:Colors.transparent,
+            filled: isBoxView?true:false,
             prefixIconConstraints: iconConstraints,
             suffixIconConstraints: iconConstraints,
           ),
         ),
-        Positioned(
+      isBoxView?SizedBox():  Positioned(
           top: 10,
           left: -24,
           bottom: 10,

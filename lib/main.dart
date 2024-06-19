@@ -7,7 +7,7 @@ import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 import 'app/routes/app_pages.dart';
 import 'app/theme/theme.dart';
-import 'app/utils/sharedPrefs.dart';
+import 'app/utils/shared_prefs.dart';
 
 Future<void> main() async{
 

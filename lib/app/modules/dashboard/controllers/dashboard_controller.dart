@@ -6,6 +6,7 @@
 
   class DashboardController extends GetxController with GetSingleTickerProviderStateMixin {
 
+    TextEditingController searchController = TextEditingController();
 
 
     final PageController pageController = PageController();

@@ -37,6 +37,9 @@ const scrim = Color(0xff000000);
 const inverseSurface = Color(0xff303129);
 const inversePrimary = Color(0xffbece7f);
 
+const success= Color(0xff008D17);
+const blue= Color(0xff6FA0FF);
+
 var lightColorScheme =   const ColorScheme(
   brightness: Brightness.light,
   primary:  primary,

@@ -11,6 +11,11 @@ abstract class Routes {
   static const CREATE_NEW_PASSWORD = _Paths.CREATE_NEW_PASSWORD;
   static const DASHBOARD = _Paths.DASHBOARD;
   static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
+  static const TRACK_CART = _Paths.TRACK_CART;
+  static const DRIVER_DETAIL = _Paths.DRIVER_DETAIL;
+  static const DAMAGE_REPORT = _Paths.DAMAGE_REPORT;
+  static const DAMAGE_REASON = _Paths.DAMAGE_REASON;
+  static const ACKNOWLEDGMENT = _Paths.ACKNOWLEDGMENT;
 }
 
 abstract class _Paths {
@@ -23,4 +28,9 @@ abstract class _Paths {
   static const CREATE_NEW_PASSWORD = '/create-new-password';
   static const DASHBOARD = '/dashboard';
   static const EDIT_PROFILE = '/edit-profile';
+  static const TRACK_CART = '/track-cart';
+  static const DRIVER_DETAIL = '/driver-detail';
+  static const DAMAGE_REPORT = '/damage-report';
+  static const DAMAGE_REASON = '/damage-reason';
+  static const ACKNOWLEDGMENT = '/acknowledgment';
 }

@@ -200,28 +200,33 @@ class HomeView extends GetView<DashboardController> {
               var mData = controller.mList[index];
               return Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                      color: onPrimary,
-                      borderRadius: BorderRadius.circular(24)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SquareImageFromAsset(
-                        mData.img,
-                        color: shadow,
-                        size: 40,
-                      ),
-                      CommonText.bold(
-                        mData.title,
-                        color: shadow,
-                        size: 16,
-                      )
-                    ],
-                  ),
-                ).marginSymmetric(horizontal: context.width * 0.16),
+                child: InkWell(
+                  onTap: (){
+                    Get.toNamed(Routes.TRACK_CART);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        color: onPrimary,
+                        borderRadius: BorderRadius.circular(24)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SquareImageFromAsset(
+                          mData.img,
+                          color: shadow,
+                          size: 40,
+                        ),
+                        CommonText.bold(
+                          mData.title,
+                          color: shadow,
+                          size: 16,
+                        )
+                      ],
+                    ),
+                  ).marginSymmetric(horizontal: context.width * 0.16),
+                ),
               );
             },
           ),

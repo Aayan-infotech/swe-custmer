@@ -13,6 +13,8 @@ class Strings{
   static const String login = "Login";
   static const String email = "Email";
   static const String name = "Name";
+  static const String firstName = "First Name";
+  static const String lastName = "Last Name";
   static const String userName = "Username";
   static const String emailUserName = "Email/Username";
   static const String enterEmailUserName = "Enter Email/Username";
@@ -55,6 +57,7 @@ class Strings{
   static const String modify = "Modify";
   static const String agreement = "Agreement";
   static const String contactUs = "Contact Us";
+  static const String acknowledgment = "Acknowledgment";
 
   static const String search = "Search";
   static const String filter = "Filter";
@@ -92,7 +95,7 @@ class Strings{
   static const String addDiverDetail = "Add Diver Detail";
   static const String uploadLicences = "Upload Licences";
 
-  static const String cardNumber = "Card Number";
+  static const String cartNumber = "Cart Number";
   static const String emergencyContact = "Emergency Contact";
   static const String damagePolicy = "Damage Policy";
   static const String uploadImage = "Upload Image";
@@ -100,6 +103,7 @@ class Strings{
   static const String next = "Next";
   static const String cartNameCartNumber = "CartName/CartNumber";
   static const String tagNumber = "Tag Number";
+  static const String enterTagNumber = "Enter Tag Number";
   static const String selectTheDamageReason = "Select the damage reason";
   static const String reason1 = "Reason 1";
   static const String reason2 = "Reason 2";
@@ -125,6 +129,8 @@ class Strings{
 
 
   static const dummyText  = "Lorem ipsum dolor sit amet, consectetur adipiscing";
+  static const smallDummyText  = "Lorem ipsum dolor sit amet, consectetur adipiscing,Lorem ipsum dolor sit amet, consectetur adipiscing,Lorem ipsum dolor sit amet, consectetur adipiscing";
+  static const mediumDummyText  = "Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing, Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing";
 
 
 

@@ -22,6 +22,7 @@ dependencies:
   animations: ^2.0.11
   flutter_svg: ^2.0.10+1
   pin_code_text_field: ^1.8.0
+  dcli: ^4.0.1-beta.4
 
 dev_dependencies:
   flutter_test:

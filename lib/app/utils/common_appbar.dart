@@ -39,7 +39,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? IconButton(
               splashRadius: 24,
               onPressed: onBackTap ?? () => Navigator.of(context).pop(),
-              icon: SquareSvgImageFromAsset(leadingIcon ?? Assets.svgIcBack, color: onPrimary))
+              icon: SquareSvgImageFromAsset(leadingIcon ?? Assets.svgIcBack, color: scrim))
               : isHome ? InkWell(
                 onTap: onBackTap,
                 borderRadius: const BorderRadius.only(
@@ -55,7 +55,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
                             child: const Icon(Icons.menu,color: onPrimary,),
                           ).paddingAll(4),
               ):const SizedBox(width: 0),
-          title: CommonText.bold(title, size: 18, color: onPrimary, textAlign: TextAlign.start),
+          title: CommonText.bold(title, size: 18, color: shadow, textAlign: TextAlign.start),
           centerTitle: isTitleCenter,
           actions: actions,
           elevation: 0,

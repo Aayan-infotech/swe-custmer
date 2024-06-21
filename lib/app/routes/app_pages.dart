@@ -1,9 +1,17 @@
 import 'package:get/get.dart';
 
+import '../modules/acknowledgment/bindings/acknowledgment_binding.dart';
+import '../modules/acknowledgment/views/acknowledgment_view.dart';
 import '../modules/createNewPassword/bindings/create_new_password_binding.dart';
 import '../modules/createNewPassword/views/create_new_password_view.dart';
+import '../modules/damageReason/bindings/damage_reason_binding.dart';
+import '../modules/damageReason/views/damage_reason_view.dart';
+import '../modules/damageReport/bindings/damage_report_binding.dart';
+import '../modules/damageReport/views/damage_report_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/driverDetail/bindings/driver_detail_binding.dart';
+import '../modules/driverDetail/views/driver_detail_view.dart';
 import '../modules/editProfile/bindings/edit_profile_binding.dart';
 import '../modules/editProfile/views/edit_profile_view.dart';
 import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
@@ -14,6 +22,8 @@ import '../modules/recoveryCode/bindings/recovery_code_binding.dart';
 import '../modules/recoveryCode/views/recovery_code_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
+import '../modules/trackCart/bindings/track_cart_binding.dart';
+import '../modules/trackCart/views/track_cart_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
 
@@ -64,6 +74,31 @@ class AppPages {
       name: _Paths.EDIT_PROFILE,
       page: () => const EditProfileView(),
       binding: EditProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.TRACK_CART,
+      page: () => const TrackCartView(),
+      binding: TrackCartBinding(),
+    ),
+    GetPage(
+      name: _Paths.DRIVER_DETAIL,
+      page: () => const DriverDetailView(),
+      binding: DriverDetailBinding(),
+    ),
+    GetPage(
+      name: _Paths.DAMAGE_REPORT,
+      page: () => const DamageReportView(),
+      binding: DamageReportBinding(),
+    ),
+    GetPage(
+      name: _Paths.DAMAGE_REASON,
+      page: () => const DamageReasonView(),
+      binding: DamageReasonBinding(),
+    ),
+    GetPage(
+      name: _Paths.ACKNOWLEDGMENT,
+      page: () => const AcknowledgmentView(),
+      binding: AcknowledgmentBinding(),
     ),
   ];
 }

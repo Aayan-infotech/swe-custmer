@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:southwaltoncarts_customer/app/routes/app_pages.dart';
 
 import '../../../../generated/assets.dart';
 import '../../../theme/theme.dart';
@@ -104,32 +105,36 @@ class ReservationView extends GetView<DashboardController>  {
                                   CommonText.bold("121332",size: 16,color: shadow,),
                                 ],
                               ),
-                              Container(
-                                padding: const EdgeInsets.only(
-                                    left: 12,
-                                    right: 12,
-                                    top: 6,
-                                    bottom: 6),
-                                decoration: BoxDecoration(
-                                    color: shadow,
-                                    borderRadius:
-                                    BorderRadius.circular(20)),
-                                child: Row(
-                                  mainAxisAlignment:MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const SquareSvgImageFromAsset(
-                                      Assets.svgIcModify,
-                                      size: 14,
-                                      color: onPrimary,
-                                    ),
-                                    SizedBox(
-                                      width: context.width * 0.01,
-                                    ),
-                                    const CommonText.bold(
-                                      Strings.modify,
-                                      color: onPrimary,
-                                    ),
-                                  ],
+                              
+                              InkWell(
+                                onTap: ()=> Get.toNamed(Routes.ADDRESS),
+                                child: Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 12,
+                                      right: 12,
+                                      top: 6,
+                                      bottom: 6),
+                                  decoration: BoxDecoration(
+                                      color: shadow,
+                                      borderRadius:
+                                      BorderRadius.circular(20)),
+                                  child: Row(
+                                    mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const SquareSvgImageFromAsset(
+                                        Assets.svgIcModify,
+                                        size: 14,
+                                        color: onPrimary,
+                                      ),
+                                      SizedBox(
+                                        width: context.width * 0.01,
+                                      ),
+                                      const CommonText.bold(
+                                        Strings.modify,
+                                        color: onPrimary,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),],
                           ),

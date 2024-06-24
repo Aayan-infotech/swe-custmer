@@ -1,12 +1,12 @@
-class Strings{
-
+class Strings {
   Strings._();
 
   static const String appName = "SWC Customer";
   static const String appFullName = "South Walton Carts Customer";
 
   static const String yourJourneyOurCars = "Your Journey, Our Cards";
-  static const String rentEffortlesslyRoleAnyWhere = "Rent Effortlessly, Roll Anywhere!";
+  static const String rentEffortlesslyRoleAnyWhere =
+      "Rent Effortlessly, Roll Anywhere!";
   static const String welcome = "Welcome!";
   static const String getStarted = "Get Started";
 
@@ -31,21 +31,22 @@ class Strings{
   static const String forgotPassword = "Forgot Password?";
   static const String logout = "Log Out";
 
-
   static const String submit = "Submit";
   static const String save = "Save";
   static const String confirm = "Confirm";
   static const String recoveryCode = "Recovery Code";
-  static const String weHaveSent4DigitRecoveryCodeToYourEmail = "We have sent 4 Digit Recovery Code to your email";
-  static const String kindlyFillTheCodeInTheBox = "Kindly fill the code in the box!";
+  static const String weHaveSent4DigitRecoveryCodeToYourEmail =
+      "We have sent 4 Digit Recovery Code to your email";
+  static const String kindlyFillTheCodeInTheBox =
+      "Kindly fill the code in the box!";
   static const String createNewPassword = "Create New Password";
   static const String enterYourNewPassword = "Enter Your New Password";
-  static const String mustBeAtLeast8Characters = "Must be atleast 8 characters.";
+  static const String mustBeAtLeast8Characters =
+      "Must be atleast 8 characters.";
   static const String newPassword = "New Password";
   static const String confirmNewPassword = "Confirm New Password";
   static const String enterConfirmNewPassword = "Enter Confirm Password";
   static const String bothPasswordMustMatch = "Both password must match.";
-
 
   static const String home = "Home";
   static const String reservation = "Reservation";
@@ -56,6 +57,7 @@ class Strings{
   static const String trackRental = "Track Rental";
   static const String modify = "Modify";
   static const String agreement = "Agreement";
+  static const String rentalAgreement = "Rental Agreement";
   static const String contactUs = "Contact Us";
   static const String acknowledgment = "Acknowledgment";
 
@@ -76,9 +78,11 @@ class Strings{
   static const String pickUpTime = "Pick Up Time";
 
   static const String bookingPlaced = "Booking Placed";
-  static const String weHaveReceivedYourBooking = "We have received your booking";
+  static const String weHaveReceivedYourBooking =
+      "We have received your booking";
   static const String bookingConfirmed = "Booking Confirmed";
-  static const String youBookingHasBeenConfirmed = "Your booking has been confirmed";
+  static const String youBookingHasBeenConfirmed =
+      "Your booking has been confirmed";
   static const String onTheWay = "On the Way";
   static const String weAreOnTheWayToDeliver = "We are on the way to delivered";
   static const String delivered = "Delivered";
@@ -92,6 +96,7 @@ class Strings{
   static const String driverDetail = "Driver Detail";
   static const String licenceNumber = "Licence Number";
   static const String insurancePolicyNumber = "Insurance Policy Number";
+  static const String message = "Message";
   static const String addDiverDetail = "Add Diver Detail";
   static const String uploadLicences = "Upload Licences";
 
@@ -111,10 +116,11 @@ class Strings{
   static const String reason4 = "Reason 4";
 
   static const String vehicleWashed = "Vehicle Washed";
-  static const String vehicleCleaned= "Vehicle Cleaned";
-  static const String vehicleCharged= "Vehicle Charged";
-  static const String readyForPickup= "Ready for pickup";
-  static const String thereIsNoAdditionalDamage = "There is no additional damage";
+  static const String vehicleCleaned = "Vehicle Cleaned";
+  static const String vehicleCharged = "Vehicle Charged";
+  static const String readyForPickup = "Ready for pickup";
+  static const String thereIsNoAdditionalDamage =
+      "There is no additional damage";
 
   static const String feedbackRequest = "Feedback Request";
   static const String timePeriod = "Time Period";
@@ -123,22 +129,16 @@ class Strings{
   static const String comments = "Comments";
   static const String enterDetailedComments = "Enter Detailed Comments";
 
-  static const String areSureYouWantToLogout = "Are you sure you want to logout?";
+  static const String areSureYouWantToLogout =
+      "Are you sure you want to logout?";
   static const String cancel = "Cancel";
   static const String redCart = "Red Cart";
 
-
-  static const dummyText  = "Lorem ipsum dolor sit amet, consectetur adipiscing";
-  static const smallDummyText  = "Lorem ipsum dolor sit amet, consectetur adipiscing,Lorem ipsum dolor sit amet, consectetur adipiscing,Lorem ipsum dolor sit amet, consectetur adipiscing";
-  static const mediumDummyText  = "Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing, Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing";
-
-
-
-
-
-
-
-
-
-
+  static const dummyText = "Lorem ipsum dolor sit amet, consectetur adipiscing";
+  static const smallDummyText =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing,Lorem ipsum dolor sit amet, consectetur adipiscing,Lorem ipsum dolor sit amet, consectetur adipiscing";
+  static const mediumDummyText =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing, Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing Lorem ipsum dolor sit amet, consectetur adipiscing";
+  static const dummyRentalAgreement =
+      "Thank you for allowing us to make your vacation and cart rental experience memorable. It is VERY important that you read this agreement especially as it pertains to rules, damage fees, and check in photos. The reason being is that not only do we want you to have a nice rental cart but also the customer that it gets it after you. Please treat our carts with care because we take damage very serious. We also want you and the passengers to be safe. Pages 5,8, and 10 need to be printed if not the whole contract.";
 }

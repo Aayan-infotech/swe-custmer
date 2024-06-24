@@ -16,6 +16,10 @@ abstract class Routes {
   static const DAMAGE_REPORT = _Paths.DAMAGE_REPORT;
   static const DAMAGE_REASON = _Paths.DAMAGE_REASON;
   static const ACKNOWLEDGMENT = _Paths.ACKNOWLEDGMENT;
+  static const FEEDBACK = _Paths.FEEDBACK;
+  static const ADDRESS = _Paths.ADDRESS;
+  static const AGREEMENT = _Paths.AGREEMENT;
+  static const CONTACT_US = _Paths.CONTACT_US;
 }
 
 abstract class _Paths {
@@ -33,4 +37,8 @@ abstract class _Paths {
   static const DAMAGE_REPORT = '/damage-report';
   static const DAMAGE_REASON = '/damage-reason';
   static const ACKNOWLEDGMENT = '/acknowledgment';
+  static const FEEDBACK = '/feedback';
+  static const ADDRESS = '/address';
+  static const AGREEMENT = '/agreement';
+  static const CONTACT_US = '/contact-us';
 }

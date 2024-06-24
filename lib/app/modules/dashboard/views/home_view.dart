@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:southwaltoncarts_customer/app/routes/app_pages.dart';
+import 'package:southwaltoncarts_customer/app/utils/common_button.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_text_view.dart';
 import 'package:southwaltoncarts_customer/app/utils/strings.dart';
 
@@ -109,35 +110,118 @@ class HomeView extends GetView<DashboardController> {
                         )
                       ],
                     ),
-                    _singleItem("History", onClick: () {}),
-                    _singleItem("Track Rental", onClick: () {}),
-                    _singleItem("Reservation", onClick: () {}),
-                    _singleItem("Modify", onClick: () {}),
-                    _singleItem("Agreement", onClick: () {}),
-                    _singleItem("Contact Us", onClick: () {}),
+                    _singleItem("Modify", onClick: () {
+                      Get.toNamed(Routes.ADDRESS);
+                    }),
+                    _singleItem("Agreement", onClick: () {
+                      Get.toNamed(Routes.AGREEMENT);
+                    }),
+                    _singleItem("Contact Us", onClick: () {
+                      Get.toNamed(Routes.CONTACT_US);
+                    }),
                     _singleItem("Share the App", onClick: () {}),
                     Expanded(
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 16.0,bottom: 16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              const Icon(
-                                Icons.logout,
-                                size: 28,
-                                color: onPrimary,
-                              ),
-                              SizedBox(
-                                width: context.width * 0.01,
-                              ),
-                              CommonText.extraBold(
-                                Strings.logout.toUpperCase(),
-                                size: 22,
-                                color: onPrimary,
-                              ),
-                            ],
+                          child: InkWell(
+                            onTap: (){
+                              Get.dialog(
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(horizontal: context.width*0.14),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          color: onPrimary,
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(20),
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(32.0),
+                                          child: Material(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                const CommonText.bold(
+                                                  Strings.logout,
+                                                  textAlign: TextAlign.center,size: 20,color: shadow,
+                                                ),
+                                                const SizedBox(height: 8),
+                                                const CommonText.semiBold(
+                                                  Strings.areSureYouWantToLogout, size: 16,color: shadow,
+                                                ),
+                                                const SizedBox(height: 20),
+                                                //Buttons
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: SizedBox(
+                                                        height:context.height*0.04,
+                                                        child: CommonButton(
+                                                          onPressed: (){
+                                                            Get.back();
+                                                            Get.back();
+                                                          },
+                                                          mPadding: const EdgeInsets.all(8),
+                                                          borderRadius: 8,
+                                                          label: Strings.cancel,
+                                                          bgColor: Colors.grey,
+                                                          labelColor: shadow,
+                                                        ),
+                                                      )
+                                                    ),
+                                                    const SizedBox(width: 10),
+                                                    Expanded(
+                                                      child: SizedBox(
+                                                        height:context.height*0.04,
+                                                        child: CommonButton(
+                                                          onPressed: (){
+                                                            Get.back();
+                                                            Get.back();
+                                                          },
+                                                          mPadding: const EdgeInsets.all(8),
+                                                          borderRadius: 8,
+                                                          bgColor: error,
+                                                          label: Strings.logout,
+                                                          labelColor: onPrimary,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                const Icon(
+                                  Icons.logout,
+                                  size: 28,
+                                  color: onPrimary,
+                                ),
+                                SizedBox(
+                                  width: context.width * 0.01,
+                                ),
+                                CommonText.extraBold(
+                                  Strings.logout.toUpperCase(),
+                                  size: 22,
+                                  color: onPrimary,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -202,7 +286,12 @@ class HomeView extends GetView<DashboardController> {
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
                   onTap: (){
-                    Get.toNamed(Routes.TRACK_CART);
+                    switch(index){
+                      case 0: Get.toNamed(Routes.TRACK_CART);
+                      case 1: Get.toNamed(Routes.DRIVER_DETAIL);
+                      case 2: Get.toNamed(Routes.DAMAGE_REPORT);
+                    }
+
                   },
                   child: Container(
                     padding: const EdgeInsets.all(8),

@@ -27,7 +27,7 @@ class CommonButton extends StatelessWidget {
     this.labelColor = secondary,
     this.bgColor = primary,
     this.fontWeight = FontWeight.bold,
-    this.borderRadius = 8,
+    this.borderRadius = 24,
     this.borderColor = Colors.transparent,
     this.borderWidth = 0.0,
     super.key,
@@ -54,7 +54,7 @@ class CommonButton extends StatelessWidget {
         //       color: Colors.black26, offset: Offset(0, 4), blurRadius: 5.0)
         // ],
         color: bgColor,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: ElevatedButton(
         onPressed: onPressed,

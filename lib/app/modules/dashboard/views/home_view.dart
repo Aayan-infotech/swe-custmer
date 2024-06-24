@@ -112,22 +112,19 @@ class HomeView extends GetView<DashboardController> {
                         )
                       ],
                     ),
-                    // _singleItem("History", onClick: () {
-                    //   Get.back();
-                    //   controller.currentIndex.value = 2;
-                    // }),
-                    // _singleItem("Track Rental", onClick: () {
-                    //   Get.back();
-                    //   Get.toNamed(Routes.TRACK_CART);
-                    //
-                    // }),
-                    // _singleItem("Reservation", onClick: () {
-                    //   Get.back();
-                    //   controller.currentIndex.value = 0;
-                    // }),
-                    _singleItem("Modify", onClick: () {}),
-                    _singleItem("Agreement", onClick: () {}),
-                    _singleItem("Contact Us", onClick: () {}),
+
+                    _singleItem("Modify", onClick: () {
+                      Get.back();
+                         Get.toNamed(Routes.ADDRESS);
+                    }),
+                    _singleItem("Agreement", onClick: () {
+                      Get.back();
+                      Get.toNamed(Routes.AGREEMENT);
+                    }),
+                    _singleItem("Contact Us", onClick: () {
+                      Get.back();
+                      Get.toNamed(Routes.CONTACT_US);
+                    }),
                     _singleItem("Share the App", onClick: () {
                       Share.share('https://play.google.com/store/apps/details?id=in.aayaninfotech.southwaltoncarts_customer&hl=en');
                     }),

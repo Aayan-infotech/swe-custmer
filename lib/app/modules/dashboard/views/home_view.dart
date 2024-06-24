@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:southwaltoncarts_customer/app/routes/app_pages.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_text_view.dart';
 import 'package:southwaltoncarts_customer/app/utils/strings.dart';
@@ -109,13 +111,25 @@ class HomeView extends GetView<DashboardController> {
                         )
                       ],
                     ),
-                    _singleItem("History", onClick: () {}),
-                    _singleItem("Track Rental", onClick: () {}),
-                    _singleItem("Reservation", onClick: () {}),
+                    // _singleItem("History", onClick: () {
+                    //   Get.back();
+                    //   controller.currentIndex.value = 2;
+                    // }),
+                    // _singleItem("Track Rental", onClick: () {
+                    //   Get.back();
+                    //   Get.toNamed(Routes.TRACK_CART);
+                    //
+                    // }),
+                    // _singleItem("Reservation", onClick: () {
+                    //   Get.back();
+                    //   controller.currentIndex.value = 0;
+                    // }),
                     _singleItem("Modify", onClick: () {}),
                     _singleItem("Agreement", onClick: () {}),
                     _singleItem("Contact Us", onClick: () {}),
-                    _singleItem("Share the App", onClick: () {}),
+                    _singleItem("Share the App", onClick: () {
+                      Share.share('https://play.google.com/store/apps/details?id=in.aayaninfotech.southwaltoncarts_customer&hl=en');
+                    }),
                     Expanded(
                       child: Align(
                         alignment: Alignment.bottomRight,
@@ -202,7 +216,7 @@ class HomeView extends GetView<DashboardController> {
                 padding: const EdgeInsets.all(8.0),
                 child: InkWell(
                   onTap: (){
-                    Get.toNamed(Routes.TRACK_CART);
+                    Get.toNamed(Routes.DRIVER_DETAIL);
                   },
                   child: Container(
                     padding: const EdgeInsets.all(8),

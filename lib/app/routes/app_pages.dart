@@ -32,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.DASHBOARD;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -84,6 +84,9 @@ class AppPages {
       name: _Paths.DRIVER_DETAIL,
       page: () => const DriverDetailView(),
       binding: DriverDetailBinding(),
+      transition: Transition.native,
+      transitionDuration: Duration(seconds: 1)
+
     ),
     GetPage(
       name: _Paths.DAMAGE_REPORT,

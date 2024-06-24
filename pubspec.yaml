@@ -24,6 +24,7 @@ dependencies:
   pin_code_text_field: ^1.8.0
   timeline_tile: ^2.0.0
   google_fonts:
+  share_plus: ^9.0.0
 
 dev_dependencies:
   flutter_test:

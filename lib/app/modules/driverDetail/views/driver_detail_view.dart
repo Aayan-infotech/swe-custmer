@@ -36,8 +36,6 @@ class DriverDetailView extends GetView<DriverDetailController> {
             children: [
 
               SizedBox(height: context.height*0.04,),
-
-
               SizedBox(
                   height: context.height*0.24,
                   child: Image.asset(Assets.imagesDl,fit: BoxFit.fill,)),

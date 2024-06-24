@@ -2,6 +2,12 @@ import 'package:get/get.dart';
 
 import '../modules/acknowledgment/bindings/acknowledgment_binding.dart';
 import '../modules/acknowledgment/views/acknowledgment_view.dart';
+import '../modules/address/bindings/address_binding.dart';
+import '../modules/address/views/address_view.dart';
+import '../modules/agreement/bindings/agreement_binding.dart';
+import '../modules/agreement/views/agreement_view.dart';
+import '../modules/contactUs/bindings/contact_us_binding.dart';
+import '../modules/contactUs/views/contact_us_view.dart';
 import '../modules/createNewPassword/bindings/create_new_password_binding.dart';
 import '../modules/createNewPassword/views/create_new_password_view.dart';
 import '../modules/damageReason/bindings/damage_reason_binding.dart';
@@ -14,6 +20,8 @@ import '../modules/driverDetail/bindings/driver_detail_binding.dart';
 import '../modules/driverDetail/views/driver_detail_view.dart';
 import '../modules/editProfile/bindings/edit_profile_binding.dart';
 import '../modules/editProfile/views/edit_profile_view.dart';
+import '../modules/feedback/bindings/feedback_binding.dart';
+import '../modules/feedback/views/feedback_view.dart';
 import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
 import '../modules/forgotPassword/views/forgot_password_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -102,6 +110,26 @@ class AppPages {
       name: _Paths.ACKNOWLEDGMENT,
       page: () => const AcknowledgmentView(),
       binding: AcknowledgmentBinding(),
+    ),
+    GetPage(
+      name: _Paths.FEEDBACK,
+      page: () => const FeedbackView(),
+      binding: FeedbackBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADDRESS,
+      page: () => const AddressView(),
+      binding: AddressBinding(),
+    ),
+    GetPage(
+      name: _Paths.AGREEMENT,
+      page: () => const AgreementView(),
+      binding: AgreementBinding(),
+    ),
+    GetPage(
+      name: _Paths.CONTACT_US,
+      page: () => const ContactUsView(),
+      binding: ContactUsBinding(),
     ),
   ];
 }

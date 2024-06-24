@@ -26,7 +26,7 @@ class CommonTextField extends StatelessWidget {
   final int maxLines;
   final int minLines;
   final List<TextInputFormatter> inputFormatters;
-  final bool isReadOnly;
+  final bool isReadOnly, isSuffix;
   final TextAlign textAlign;
   final VoidCallback? onTap;
   final BoxConstraints iconConstraints;
@@ -74,7 +74,8 @@ class CommonTextField extends StatelessWidget {
     this.bgColor = Colors.transparent,
     this.textColor = primary,
     this.mPadding = 0,
-    this.isBoxView = false
+    this.isBoxView = false,
+    this.isSuffix = false
 
   }) : _fieldKey = globalKey;
 
@@ -135,7 +136,7 @@ class CommonTextField extends StatelessWidget {
             suffixIconConstraints: iconConstraints,
           ),
         ),
-      isBoxView?SizedBox():  Positioned(
+      isBoxView || isSuffix ? const SizedBox():  Positioned(
           top: 10,
           left: -24,
           bottom: 10,

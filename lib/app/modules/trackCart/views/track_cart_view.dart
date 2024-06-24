@@ -48,85 +48,99 @@ class TrackCartView extends GetView<TrackCartController> {
                ],
              ).marginOnly(top: 16),
            ),
-            Divider().marginOnly(top: 8),
-            ListView(
-              shrinkWrap: true,
-              children: <Widget>[
-                TimelineTile(
-                  alignment: TimelineAlign.manual,
-                  lineXY: 0.1,
-                  isFirst: true,
-                  indicatorStyle: const IndicatorStyle(
-                    width: 20,
-                    color: Color(0xFF27AA69),
-                    padding: EdgeInsets.all(6),
+            const Divider().marginOnly(top: 8),
+            Center(
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  TimelineTile(
+                    alignment: TimelineAlign.manual,
+                    lineXY: 0.1,
+                    isFirst: true,
+                    indicatorStyle: const IndicatorStyle(
+                      width: 20,
+                      color: secondary,
+                      padding: EdgeInsets.all(6),
+                    ),
+                    endChild: const RightChild(
+                      asset: Assets.svgIcBookingFile,
+                      title: Strings.bookingPlaced,
+                      message: Strings.weHaveReceivedYourBooking,
+                    ),
+                    beforeLineStyle: const LineStyle(
+                      color: secondary,
+                    ),
                   ),
-                  endChild: const RightChild(
-                    asset: Assets.imagesSwcLogo,
-                    title: 'Order Placed',
-                    message: 'We have received your order.',
+                  TimelineTile(
+                    alignment: TimelineAlign.manual,
+                    lineXY: 0.1,
+                    indicatorStyle: const IndicatorStyle(
+                      width: 20,
+                      color: secondary,
+                      padding: EdgeInsets.all(6),
+                    ),
+                    endChild: const RightChild(
+                      asset: Assets.svgIcConfirmCheck,
+                      title: Strings.bookingConfirmed,
+                      message: Strings.youBookingHasBeenConfirmed,
+                    ),
+                    beforeLineStyle: const LineStyle(
+                      color: secondary,
+                    ),
                   ),
-                  beforeLineStyle: const LineStyle(
-                    color: Color(0xFF27AA69),
+                  TimelineTile(
+                    alignment: TimelineAlign.manual,
+                    lineXY: 0.1,
+                    indicatorStyle: const IndicatorStyle(
+                      width: 20,
+                      color: secondary,
+                      padding: EdgeInsets.all(6),
+                    ),
+                    endChild: const RightChild(
+                      asset: Assets.svgIcLocMarker,
+                      title: Strings.onTheWay,
+                      message: Strings.weAreOnTheWayToDeliver,
+                    ),
+                    beforeLineStyle: const LineStyle(
+                      color: secondary,
+                    ),
                   ),
-                ),
-                TimelineTile(
-                  alignment: TimelineAlign.manual,
-                  lineXY: 0.1,
-                  indicatorStyle: const IndicatorStyle(
-                    width: 20,
-                    color: Color(0xFF27AA69),
-                    padding: EdgeInsets.all(6),
+                  TimelineTile(
+                    alignment: TimelineAlign.manual,
+                    lineXY: 0.1,
+                    indicatorStyle: const IndicatorStyle(
+                      width: 20,
+                      color: secondary,
+                      padding: EdgeInsets.all(6),
+                    ),
+                    endChild: const RightChild(
+                      asset: Assets.svgIcConfirmCheck,
+                      title: Strings.delivered,
+                      message: Strings.weDeliveredTheCart,
+                    ),
+                    beforeLineStyle: const LineStyle(
+                      color: secondary,
+                    ),
                   ),
-                  endChild: const RightChild(
-                    asset: Assets.imagesSwcLogo,
-                    title: 'Order Confirmed',
-                    message: 'Your order has been confirmed.',
+                  TimelineTile(
+                    alignment: TimelineAlign.manual,
+                    lineXY: 0.1,
+                    isLast: true,
+                    indicatorStyle: const IndicatorStyle(
+                      width: 20,
+                      color: secondary,
+                      padding: EdgeInsets.all(6),
+                    ),
+                    endChild:  const RightChild(
+                      disabled: true,
+                      asset: Assets.svgIcConfirmCheck,
+                      title: Strings.pickedUp,
+                      message: Strings.weArePickedUpTheCart,
+                    ),
+
                   ),
-                  beforeLineStyle: const LineStyle(
-                    color: Color(0xFF27AA69),
-                  ),
-                ),
-                TimelineTile(
-                  alignment: TimelineAlign.manual,
-                  lineXY: 0.1,
-                  indicatorStyle: const IndicatorStyle(
-                    width: 20,
-                    color: Color(0xFF2B619C),
-                    padding: EdgeInsets.all(6),
-                  ),
-                  endChild: const RightChild(
-                    asset: Assets.imagesSwcLogo,
-                    title: 'Order Processed',
-                    message: 'We are preparing your order.',
-                  ),
-                  beforeLineStyle: const LineStyle(
-                    color: Color(0xFF27AA69),
-                  ),
-                  afterLineStyle: const LineStyle(
-                    color: Color(0xFFDADADA),
-                  ),
-                ),
-                TimelineTile(
-                  alignment: TimelineAlign.manual,
-                  lineXY: 0.1,
-                  isLast: true,
-                  indicatorStyle: const IndicatorStyle(
-                    width: 20,
-                    color: Color(0xFFDADADA),
-                    padding: EdgeInsets.all(6),
-                  ),
-                  endChild:  const RightChild(
-                    disabled: true,
-                    asset: Assets.imagesSwcLogo,
-                    title: 'Ready to Pickup',
-                    message: 'Your order is ready for pickup.',
-                  ),
-                  beforeLineStyle: const LineStyle(
-                    color: Color(0xFFDADADA),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
 
           ],

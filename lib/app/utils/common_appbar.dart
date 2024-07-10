@@ -15,9 +15,11 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final String? leadingIcon;
   final Color? bgColor;
+  final Color? titleColor;
 
   const CommonAppBar({
     required this.title,
+    this.titleColor,
     this.onBackTap,
     this.bottom,
     this.hasBackIcon = false,
@@ -55,7 +57,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
                             child: const Icon(Icons.menu,color: onPrimary,),
                           ).paddingAll(4),
               ):const SizedBox(width: 0),
-          title: CommonText.bold(title, size: 18, color: shadow, textAlign: TextAlign.start),
+          title: CommonText.bold(title, size: 18, color: titleColor??shadow, textAlign: TextAlign.start),
           centerTitle: isTitleCenter,
           actions: actions,
           elevation: 0,

@@ -8,6 +8,7 @@ class SplashController extends GetxController {
   Timer? timer;
 
   void navigateTo(){
+    print('navigate');
    timer = Timer(const Duration(seconds: 3),()=>Get.toNamed(Routes.WELCOME));
   }
 
@@ -16,9 +17,9 @@ class SplashController extends GetxController {
     timer?.cancel();
     super.dispose();
   }
-
-  @override
-  void onClose() {
-    timer?.cancel();
-  }
+  //
+  // @override
+  // void onClose() {
+  //   timer?.cancel();
+  // }
 }

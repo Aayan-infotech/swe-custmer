@@ -81,7 +81,7 @@ class ReservationView extends GetView<DashboardController>  {
                   ),
                 ),
                 SizedBox(
-                  height: context.height * 0.02,
+                  height: context.height * 0.01,
                 ),
             
                 Stack(
@@ -102,7 +102,7 @@ class ReservationView extends GetView<DashboardController>  {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   CommonText.bold(Strings.redCart,size: 16,color: shadow,),
-                                  CommonText.bold("121332",size: 16,color: shadow,),
+                                  CommonText.bold("1213329788797798798",size: 16,color: shadow,),
                                 ],
                               ),
                               
@@ -138,7 +138,7 @@ class ReservationView extends GetView<DashboardController>  {
                                 ),
                               ),],
                           ),
-                           SizedBox(height: context.height*0.4,),
+                           SizedBox(height: context.height*0.33,),
                         //  SizedBox(child: Image.asset(Assets.imagesGolfCart,)),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -208,11 +208,12 @@ class ReservationView extends GetView<DashboardController>  {
                       ),
                     ).paddingSymmetric(horizontal: context.width*0.056),
                     Positioned(
-                        top: context.height*0.02,
-                        left: -(context.width*0.16),
+                        top: (context.height*0.01),
+                        // right: -(context.width*005),
+                        left: -(context.width*0.0001),
                         child: SizedBox(
                         height: context.height*0.46,
-                        child: Image.asset(Assets.imagesGolfCart,)))
+                        child: Image.asset(Assets.imagesGolfCart,height: context.height*0.1,width: context.width*0.85,)))
                   ],
             
                 )

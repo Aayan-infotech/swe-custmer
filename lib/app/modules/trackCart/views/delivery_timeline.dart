@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:southwaltoncarts_customer/app/theme/theme.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_images.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_text_view.dart';
+import 'package:southwaltoncarts_customer/app/utils/extension.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 /*class ShowcaseDeliveryTimeline extends StatelessWidget {
@@ -202,23 +203,26 @@ class RightChild extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Row(
-        children: [
-          Opacity(
-            opacity: disabled ? 0.5 : 1,
-            child: SquareSvgImageFromAsset(asset, size: 42),
-          ),
-          const SizedBox(width: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CommonText.extraBold(title,size: 18,color: secondary),
-              CommonText.medium(message,size: 16,color: secondary),
+      child: SizedBox(
+        width: context.width*0.1,
+        child: Row(
+          children: [
+            Opacity(
+              opacity: disabled ? 0.5 : 1,
+              child: SquareSvgImageFromAsset(asset, size: 42),
+            ),
+            const SizedBox(width: 20),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CommonText.extraBold(title,size: 18,color: secondary),
+               CommonText.medium(message,color: secondary,maxLines: 3,overflow: TextOverflow.ellipsis,),
 
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

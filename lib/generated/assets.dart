@@ -25,6 +25,7 @@ class Assets {
   static const String imagesGolftCart7 = 'assets/images/golft_cart7.png';
   static const String imagesGolftCart8 = 'assets/images/golft_cart8.png';
   static const String imagesHomeBg = 'assets/images/home_bg.png';
+  static const String imagesLotti = 'assets/images/lotti.json';
   static const String imagesPickup = 'assets/images/pickup.png';
   static const String imagesSignature = 'assets/images/signature.png';
   static const String imagesSwcLogo = 'assets/images/swc_logo.png';
@@ -40,7 +41,7 @@ class Assets {
   static const String svgIcCard = 'assets/svg/ic_card.svg';
   static const String svgIcConfirmCheck = 'assets/svg/ic_confirm_check.svg';
   static const String svgIcDate = 'assets/svg/ic_date.svg';
-  static const String svgIcDelivered = 'assets/svg/ic_delievered.svg';
+  static const String svgIcDelievered = 'assets/svg/ic_delievered.svg';
   static const String svgIcEdit = 'assets/svg/ic_edit.svg';
   static const String svgIcFile = 'assets/svg/ic_file.svg';
   static const String svgIcFileEdit = 'assets/svg/ic_file_edit.svg';

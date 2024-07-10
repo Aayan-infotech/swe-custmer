@@ -51,7 +51,7 @@ class Strings {
   static const String home = "Home";
   static const String reservation = "Reservation";
   static const String history = "History";
-  static const String truckCart = "Truck Cart";
+  static const String truckCart = "Track Cart";
   static const String driverDetails = "Driver Details";
   static const String damageReport = "Damage Report";
   static const String trackRental = "Track Rental";

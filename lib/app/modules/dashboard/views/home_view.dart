@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:lottie/lottie.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:southwaltoncarts_customer/app/routes/app_pages.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_button.dart';
@@ -268,6 +270,7 @@ class HomeView extends GetView<DashboardController> {
         ),
         appBar: CommonAppBar(
           title: 'Hello User!',
+          titleColor: Colors.white,
           isHome: true,
           actions: const [
             Padding(
@@ -283,49 +286,61 @@ class HomeView extends GetView<DashboardController> {
             drawerKey.currentState?.openDrawer();
           },
         ),
-        body: Align(
-          alignment: Alignment.bottomCenter,
-          child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: controller.mList.length,
-            itemBuilder: (context, index) {
-              var mData = controller.mList[index];
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: InkWell(
-                  onTap: (){
-                    switch(index){
-                      case 0: Get.toNamed(Routes.DRIVER_DETAIL);
-                      case 1: Get.toNamed(Routes.DRIVER_DETAIL);
-                      case 2: Get.toNamed(Routes.DAMAGE_REPORT);
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                        color: onPrimary,
-                        borderRadius: BorderRadius.circular(24)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SquareImageFromAsset(
-                          mData.img,
-                          color: shadow,
-                          size: 40,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Lottie.asset('assets/images/lotti.json',
+
+              width: context.width,
+              height: context.height*0.1,
+              fit: BoxFit.cover,
+            ),
+
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: controller.mList.length,
+                itemBuilder: (context, index) {
+                  var mData = controller.mList[index];
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: (){
+                        switch(index){
+                          case 0: Get.toNamed(Routes.TRACK_CART);
+                          case 1: Get.toNamed(Routes.DRIVER_DETAIL);
+                          case 2: Get.toNamed(Routes.DAMAGE_REPORT);
+                        }
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                            color: onPrimary,
+                            borderRadius: BorderRadius.circular(24)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SquareImageFromAsset(
+                              mData.img,
+                              color: shadow,
+                              size: 40,
+                            ),
+                            CommonText.bold(
+                              mData.title,
+                              color: shadow,
+                              size: 16,
+                            )
+                          ],
                         ),
-                        CommonText.bold(
-                          mData.title,
-                          color: shadow,
-                          size: 16,
-                        )
-                      ],
+                      ).marginSymmetric(horizontal: context.width * 0.16),
                     ),
-                  ).marginSymmetric(horizontal: context.width * 0.16),
-                ),
-              );
-            },
-          ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

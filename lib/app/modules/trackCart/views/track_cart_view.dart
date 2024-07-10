@@ -56,6 +56,7 @@ class TrackCartView extends GetView<TrackCartController> {
                   TimelineTile(
                     alignment: TimelineAlign.manual,
                     lineXY: 0.1,
+
                     isFirst: true,
                     indicatorStyle: const IndicatorStyle(
                       width: 20,

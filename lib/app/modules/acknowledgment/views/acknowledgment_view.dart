@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:southwaltoncarts_customer/app/utils/extension.dart';
 
 import '../../../../generated/assets.dart';
 import '../../../routes/app_pages.dart';
@@ -32,6 +34,7 @@ class AcknowledgmentView extends GetView<AcknowledgmentController> {
           isTitleCenter: true,
         ),
         body: SingleChildScrollView(
+          padding: EdgeInsets.only(bottom: context.bottomPadding),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -49,51 +52,55 @@ class AcknowledgmentView extends GetView<AcknowledgmentController> {
                         ],
                         borderRadius: BorderRadius.circular(16)),
                     child: const CommonText.semiBold(
-                      Strings.mediumDummyText,
+                      "By clicking/checking this box, I, the lessee of the cart, acknowledge and certify that the following items need attention and agree to the charges as outlined in the rental agreement.",
                       size: 16,
                       color: shadow,
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.justify,
                     )).marginOnly(top: 8, bottom: 8),
               ),
               SizedBox(
                 height: context.height * 0.02,
               ),
-              GridView.builder(
-                shrinkWrap: true,
-                itemCount: 5,
-                padding: EdgeInsets.symmetric(horizontal: context.width * 0.1),
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 4,
-                    crossAxisSpacing: 24,
-                    mainAxisSpacing: 8),
-                itemBuilder: (context, index) {
-                  return Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      SizedBox(
-                          width: 24,
-                          height: 24,
-                          child: Checkbox(
-                              value: true, onChanged: (onChanged) {})),
-                      const CommonText.medium(
-                        Strings.noDamage,
-                        color: shadow,
-                        size: 16,
-                      )
-                    ],
-                  );
-                },
-              ),
+              Obx(() {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.checklist.length,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: context.width * 0.1),
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    var item = controller.checklist[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                              width: 24,
+                              height: 24,
+                              child: Checkbox(
+                                  value: item['checked'] as bool, onChanged: (value) {
+                                    controller.updateChecklist(index, value??false);
+                              })),
+                           const SizedBox(width: 8),
+                           Expanded(
+                             child: CommonText.medium(
+                              item['text'].toString(),
+                              color: shadow,
+                              size: 16,
+                                                     ),
+                           )
+                        ],
+                      ),
+                    );
+                  },
+                );
+              }),
               SizedBox(
                 width: context.width * 0.7,
                 child: CommonButton(
                   onPressed: () {
-                    Get.offNamedUntil(
-                      Routes.FEEDBACK,
-                      ModalRoute.withName(Routes.DASHBOARD),
-                    );
+                    controller.damageReport();
                   },
                   label: Strings.next,
                   labelColor: onPrimary,

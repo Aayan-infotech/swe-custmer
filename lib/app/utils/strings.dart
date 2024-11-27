@@ -134,6 +134,8 @@ class Strings {
   static const String cancel = "Cancel";
   static const String redCart = "Red Cart";
 
+  static const String damagePolicyContent = "By clicking/checking this box, I, the lessee of the cart, acknowledge and certify that this cart does not have any new damage that has not been previously recorded. I further acknowledge and agree that if any other damage is found at the time of pickup on the last day of this cart rental, I will be responsible for paying for such damage as per the rental agreement";
+
   static const dummyText = "Lorem ipsum dolor sit amet, consectetur adipiscing";
   static const smallDummyText =
       "Lorem ipsum dolor sit amet, consectetur adipiscing,Lorem ipsum dolor sit amet, consectetur adipiscing,Lorem ipsum dolor sit amet, consectetur adipiscing";

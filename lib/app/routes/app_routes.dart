@@ -20,6 +20,7 @@ abstract class Routes {
   static const ADDRESS = _Paths.ADDRESS;
   static const AGREEMENT = _Paths.AGREEMENT;
   static const CONTACT_US = _Paths.CONTACT_US;
+  static const PDF_VIEWER = _Paths.PDF_VIEWER;
 }
 
 abstract class _Paths {
@@ -41,4 +42,5 @@ abstract class _Paths {
   static const ADDRESS = '/address';
   static const AGREEMENT = '/agreement';
   static const CONTACT_US = '/contact-us';
+  static const PDF_VIEWER = '/pdf-viewer';
 }

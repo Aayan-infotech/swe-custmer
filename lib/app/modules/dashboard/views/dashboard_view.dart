@@ -42,7 +42,7 @@ class DashboardView extends GetView<DashboardController> {
                       ),
                       child: TabBar(
                           onTap: (x) {
-                              print("TAB => $x");
+
                               controller.currentIndex.value = x;
                           },
                           labelColor: Colors.white,

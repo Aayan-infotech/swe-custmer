@@ -26,6 +26,8 @@ import '../modules/forgotPassword/bindings/forgot_password_binding.dart';
 import '../modules/forgotPassword/views/forgot_password_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/pdfViewer/bindings/pdf_viewer_binding.dart';
+import '../modules/pdfViewer/views/pdf_viewer_view.dart';
 import '../modules/recoveryCode/bindings/recovery_code_binding.dart';
 import '../modules/recoveryCode/views/recovery_code_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
@@ -89,13 +91,11 @@ class AppPages {
       binding: TrackCartBinding(),
     ),
     GetPage(
-      name: _Paths.DRIVER_DETAIL,
-      page: () => const DriverDetailView(),
-      binding: DriverDetailBinding(),
-      transition: Transition.native,
-      transitionDuration: Duration(seconds: 1)
-
-    ),
+        name: _Paths.DRIVER_DETAIL,
+        page: () => const DriverDetailView(),
+        binding: DriverDetailBinding(),
+        transition: Transition.native,
+        transitionDuration: Duration(seconds: 1)),
     GetPage(
       name: _Paths.DAMAGE_REPORT,
       page: () => const DamageReportView(),
@@ -130,6 +130,11 @@ class AppPages {
       name: _Paths.CONTACT_US,
       page: () => const ContactUsView(),
       binding: ContactUsBinding(),
+    ),
+    GetPage(
+      name: _Paths.PDF_VIEWER,
+      page: () => const PdfViewerView(),
+      binding: PdfViewerBinding(),
     ),
   ];
 }

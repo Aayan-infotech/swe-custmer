@@ -25,8 +25,8 @@ const errorContainer = Color(0xffffdad6);
 const onErrorContainer = Color(0xff410002);
 
 
-const surface = Color(0xfffbfaed);
-const onSurface = Color(0xff1b1c15);
+const surface = Color(0xffffffff);
+const onSurface = Color(0xff000000);
 const surfaceTint = Color(0xff576422);
 const onSurfaceVariant = Color(0xff46483c);
 

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:southwaltoncarts_customer/app/theme/theme.dart';
+import 'package:get/get.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_images.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_text_view.dart';
-import 'package:southwaltoncarts_customer/app/utils/extension.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 
 /*class ShowcaseDeliveryTimeline extends StatelessWidget {
   const ShowcaseDeliveryTimeline({super.key});
@@ -183,10 +180,12 @@ class _TimelineDelivery extends StatelessWidget {
 }*/
 
 class RightChild extends StatelessWidget {
-
   final String asset;
   final String title;
   final String message;
+  final Color titleClr;
+  final Color msgClr;
+  final Color iconClr;
   final bool disabled;
 
   const RightChild({
@@ -194,31 +193,36 @@ class RightChild extends StatelessWidget {
     required this.asset,
     required this.title,
     required this.message,
+    required this.msgClr,
+    required this.iconClr,
+    required this.titleClr,
     this.disabled = false,
   });
-
-
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SizedBox(
-        width: context.width*0.1,
+        width: context.width * 0.1,
         child: Row(
           children: [
             Opacity(
               opacity: disabled ? 0.5 : 1,
-              child: SquareSvgImageFromAsset(asset, size: 42),
+              child: SquareSvgImageFromAsset(asset, size: 42,color: iconClr,),
             ),
             const SizedBox(width: 20),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                CommonText.extraBold(title,size: 18,color: secondary),
-               CommonText.medium(message,color: secondary,maxLines: 3,overflow: TextOverflow.ellipsis,),
-
+                CommonText.extraBold(title, size: 18, color: titleClr),
+                CommonText.medium(
+                  message,
+                  color: msgClr,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ],
             ),
           ],

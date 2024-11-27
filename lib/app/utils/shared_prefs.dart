@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:get_storage/get_storage.dart';
 
-class Prefs {
+class SharedPrefs {
   static const String sharedPref = 'swc_customer';
   static const String rememberPref = 'remember_prefs';
   static const String userToken = 'token';

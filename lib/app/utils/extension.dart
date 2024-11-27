@@ -52,9 +52,9 @@ extension $BuildContextExtension on BuildContext {
 
   EdgeInsets get mediaQueryPadding => MediaQuery.of(this).padding;
 
-  double get height => mediaQuery.size.height;
-
-  double get width => mediaQuery.size.width;
+  // double get height => mediaQuery.size.height;
+  //
+  // double get width => mediaQuery.size.width;
 
   double get topPadding => mediaQuery.padding.top;
 

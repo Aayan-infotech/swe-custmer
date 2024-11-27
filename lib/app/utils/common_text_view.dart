@@ -31,7 +31,7 @@ class CommonText extends StatelessWidget {
         this.letterSpacing,
         this.fontWeight = FontWeight.normal,
         this.onTap,
-        this.fontFamily = mFontFamily,
+        this.fontFamily = Constants.mFontFamily,
         this.isUnderLine = false,
         super.key,
       });
@@ -47,7 +47,7 @@ class CommonText extends StatelessWidget {
         this.height,
         this.letterSpacing,
         this.onTap,
-        this.fontFamily = mFontFamily,
+        this.fontFamily = Constants.mFontFamily,
         this.isUnderLine = false,
         super.key,
       })  : fontWeight = FontWeight.w900;
@@ -63,7 +63,7 @@ class CommonText extends StatelessWidget {
         this.height,
         this.letterSpacing,
         this.onTap,
-        this.fontFamily = mFontFamily,
+        this.fontFamily = Constants.mFontFamily,
         this.isUnderLine = false,
         super.key,
       })  : fontWeight = FontWeight.w700;
@@ -79,7 +79,7 @@ class CommonText extends StatelessWidget {
         this.height,
         this.letterSpacing,
         this.onTap,
-        this.fontFamily = mFontFamily,
+        this.fontFamily = Constants.mFontFamily,
         this.isUnderLine = false,
         super.key,
       })  : fontWeight = FontWeight.w600;
@@ -95,7 +95,7 @@ class CommonText extends StatelessWidget {
         this.height,
         this.letterSpacing,
         this.onTap,
-        this.fontFamily = mFontFamily,
+        this.fontFamily = Constants.mFontFamily,
         this.isUnderLine = false,
         super.key,
       })  : fontWeight = FontWeight.w500;
@@ -111,7 +111,7 @@ class CommonText extends StatelessWidget {
         this.height = 1.5,
         this.letterSpacing,
         this.onTap,
-        this.fontFamily = mFontFamily,
+        this.fontFamily = Constants.mFontFamily,
         this.isUnderLine = false,
         super.key,
       })  : fontWeight = FontWeight.w400;
@@ -127,7 +127,7 @@ class CommonText extends StatelessWidget {
         this.height = 1.5,
         this.letterSpacing,
         this.onTap,
-        this.fontFamily = mFontFamily,
+        this.fontFamily = Constants.mFontFamily,
         this.isUnderLine = false,
         super.key,
       })  : fontWeight = FontWeight.w300;

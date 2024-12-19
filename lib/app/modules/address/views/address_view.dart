@@ -57,7 +57,7 @@ class AddressView extends GetView<AddressController> {
                   visible: !controller.isReserveLoading.value,
                   replacement: reservationShimmerView(context),
                   child: Container(
-                      width: context.width * 0.8,
+                      width: (context.height>=1000)? context.width * 0.8:context.width * 0.84,
                       padding: const EdgeInsets.all(16),
                       alignment: Alignment.centerLeft,
                       decoration: BoxDecoration(

@@ -32,7 +32,7 @@ class HomeView extends GetView<DashboardController> {
       child: Scaffold(
         key: controller.drawerKey,
         drawer: Container(
-          width: context.width * 0.76,
+          width: context.width / 1.5,
           padding: const EdgeInsets.only(top: 16),
           height: (context.height - context.height * 0.092),
           decoration: const BoxDecoration(
@@ -47,6 +47,7 @@ class HomeView extends GetView<DashboardController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(height: context.height*0.01),
                     GestureDetector(
                       onTap: () {
                         Get.back();
@@ -85,27 +86,6 @@ class HomeView extends GetView<DashboardController> {
                           ),
                           Column(
                             children: [
-                              Container(
-                                clipBehavior: Clip.hardEdge,
-                                width: context.width * 0.2,
-                                height: context.width * 0.12,
-                                decoration: BoxDecoration(
-                                  color: surface,
-                                  shape: BoxShape.circle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withOpacity(0.1),
-                                      spreadRadius: 2,
-                                      blurRadius: 4,
-                                      offset: const Offset(0, 3),
-                                    ),
-                                  ],
-                                ),
-                                child: SquareImageFromNetwork(
-                                  imageUrl: controller.profileImage.value,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
                               const Card(
                                 color: onPrimary,
                                 child: Padding(
@@ -132,6 +112,7 @@ class HomeView extends GetView<DashboardController> {
                         ],
                       ),
                     ),
+                    SizedBox(height: context.height*0.02),
                     _singleItem("Modify", onClick: () {
                       Get.back();
                       Get.toNamed(Routes.ADDRESS);
@@ -291,7 +272,8 @@ class HomeView extends GetView<DashboardController> {
                 ),
               ),
               Positioned(
-                  left: context.width * 0.6,
+                  // left: context.width * 0.6,
+                  left: (context.width>600)?context.width/1.8: context.width / 1.96,
                   top: context.height * 0.4,
                   child: Image.asset(Assets.imagesDrawerBack)),
               /*Positioned(

@@ -31,7 +31,6 @@ class DashRepo extends BaseRepository {
       if (img != null) 'image': img,
     });
 
-    Alert.logger(runtimeType.toString(), "FORM DATA => $mData");
 
     return put<UserProfileResponse>(
       "${ApiEndpoints.getUserProfile}/${SharedPrefs().userId()}",
@@ -40,9 +39,11 @@ class DashRepo extends BaseRepository {
     );
   }
 
-  Future<NetworkResult<HistoryResponse>> getHistory() async {
+  Future<NetworkResult<HistoryResponse>> getHistory(
+  {int limit = 15, int page = 1, String search = ""}
+      ) async {
     return get<HistoryResponse>(
-        "${ApiEndpoints.getHistory}/${SharedPrefs().userId()}",
+        "${ApiEndpoints.getHistory}/${SharedPrefs().userId()}?page=$page&limit=$limit&search=$search",
         fromJson: HistoryResponse.fromJson);
   }
 

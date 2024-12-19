@@ -8,6 +8,7 @@ import 'package:southwaltoncarts_customer/app/utils/common_button.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_images.dart';
 import 'package:southwaltoncarts_customer/app/utils/common_input_text_field.dart';
 import 'package:southwaltoncarts_customer/app/utils/extension.dart';
+import 'package:southwaltoncarts_customer/app/utils/validation.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../../theme/theme.dart';
@@ -136,16 +137,20 @@ class DamageReportView extends GetView<DamageReportController> {
               ),
               SizedBox(
                   width: context.width * 0.8,
-                  child: CommonTextField(
-                    controller: controller.desController,
-                    isBoxView: false,
-                    borderColor: onSurface,
-                    minLines: 6,
-                    maxLines: 7,
-                    hintText: "Enter description",
-                    keyboardType: TextInputType.multiline,
-                    isSuffix: true,
-                  ).marginOnly(bottom: 8)),
+                  child: Form(
+                    key: controller.formKey,
+                    child: CommonTextField(
+                      controller: controller.desController,
+                      isBoxView: false,
+                      borderColor: onSurface,
+                      minLines: 6,
+                      maxLines: 7,
+                      hintText: "Enter description",
+                      validator: (value)=> Validator.validateField(value, "Description can't be empty!"),
+                      keyboardType: TextInputType.multiline,
+                      isSuffix: true,
+                    ).marginOnly(bottom: 8),
+                  )),
               SizedBox(
                 width: context.width * 0.7,
                 child: CommonButton(
@@ -154,7 +159,7 @@ class DamageReportView extends GetView<DamageReportController> {
                       Get.toNamed(Routes.FEEDBACK,arguments: {
                         "from":"noDamage"
                       });
-                    } else if (controller.imageList.isNotEmpty) {
+                    } else if (controller.imageList.isNotEmpty && (controller.formKey.currentState?.validate()??false)) {
                       Get.toNamed(Routes.DAMAGE_REASON,arguments: {
                         "imageList":controller.imageList,
                         "des":controller.desController.text,

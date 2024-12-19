@@ -9,6 +9,8 @@ class DamageReportController extends GetxController {
 
   TextEditingController desController = TextEditingController();
 
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   var isNoDamageChecked = false.obs;
   final pickedImage = Rx<File?>(null).obs;
 
@@ -22,7 +24,6 @@ class DamageReportController extends GetxController {
       isNoDamageChecked.value = false;
       imageList.add(pickedImage.value.value!);
     }
-
   }
 
   Future<void> galleryPicker() async {

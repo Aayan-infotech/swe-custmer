@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:southwaltoncarts_customer/app/utils/constants.dart';
 
 import '../gen/assets.gen.dart';
 import '../theme/theme.dart';
@@ -89,5 +90,21 @@ void showPicker(
         ).paddingOnly(bottom: 24),
       ]);
     },
+  );
+}
+
+Widget pageLoader(BuildContext context) {
+  return Center(
+    child: Container(
+      padding: const EdgeInsets.all(4),
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(width: 14, height: 14, child: CircularProgressIndicator.adaptive(strokeWidth: 1.5)),
+          SizedBox(width: 16),
+          CommonText.regular("Loading...", color: surface,fontFamily: Constants.mFontFamily,size: 14,)
+        ],
+      ),
+    ).paddingOnly(bottom: MediaQuery.of(context).padding.bottom, top: 4),
   );
 }

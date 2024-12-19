@@ -144,17 +144,20 @@ class VehicleDetails {
       this.id, 
       this.vname, 
       this.passenger, 
+      this.tagNumber,
       this.image,});
 
   VehicleDetails.fromJson(dynamic json) {
     id = json['_id'];
     vname = json['vname'];
     passenger = json['passenger'];
+    tagNumber = json['tagNumber'];
     image = json['image'] != null ? json['image'].cast<String>() : [];
   }
   String? id;
   String? vname;
   String? passenger;
+  String? tagNumber;
   List<String>? image;
 
   Map<String, dynamic> toJson() {
@@ -162,6 +165,7 @@ class VehicleDetails {
     map['_id'] = id;
     map['vname'] = vname;
     map['passenger'] = passenger;
+    map['tagNumber'] = tagNumber;
     map['image'] = image;
     return map;
   }

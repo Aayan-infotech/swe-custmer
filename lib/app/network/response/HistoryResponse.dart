@@ -9,17 +9,12 @@ class HistoryResponse {
     success = json['success'];
     status = json['status'];
     message = json['message'];
-    if (json['data'] != null) {
-      data = [];
-      json['data'].forEach((v) {
-        data?.add(HistoryData.fromJson(v));
-      });
-    }
+    data = json['data'] != null ? HistoryData.fromJson(json['data']) : null;
   }
   bool? success;
   int? status;
   String? message;
-  List<HistoryData>? data;
+  HistoryData? data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -27,7 +22,7 @@ class HistoryResponse {
     map['status'] = status;
     map['message'] = message;
     if (data != null) {
-      map['data'] = data?.map((v) => v.toJson()).toList();
+      map['data'] = data?.toJson();
     }
     return map;
   }
@@ -36,11 +31,51 @@ class HistoryResponse {
 
 class HistoryData {
   HistoryData({
+      this.total, 
+      this.page, 
+      this.limit, 
+      this.totalPages,
+      this.data,});
+
+  HistoryData.fromJson(dynamic json) {
+    total = json['total'];
+    page = json['page'];
+    limit = json['limit'];
+    totalPages = json['totalPages'];
+    if (json['data'] != null) {
+      data = [];
+      json['data'].forEach((v) {
+        data?.add(BookingData.fromJson(v));
+      });
+    }
+  }
+  int? total;
+  int? page;
+  int? limit;
+  int? totalPages;
+  List<BookingData>? data;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['total'] = total;
+    map['page'] = page;
+    map['limit'] = limit;
+    map['totalPages'] = totalPages;
+    if (data != null) {
+      map['data'] = data?.map((v) => v.toJson()).toList();
+    }
+    return map;
+  }
+
+}
+
+class BookingData {
+  BookingData({
       this.amount, 
       this.bookingDetails, 
       this.reservationDetails,});
 
-  HistoryData.fromJson(dynamic json) {
+  BookingData.fromJson(dynamic json) {
     amount = json['amount'];
     bookingDetails = json['bookingDetails'] != null ? BookingDetails.fromJson(json['bookingDetails']) : null;
     reservationDetails = json['reservationDetails'] != null ? ReservationDetails.fromJson(json['reservationDetails']) : null;
@@ -149,7 +184,8 @@ class BookingDetails {
       this.customerDrivers, 
       this.createdAt, 
       this.updatedAt, 
-      this.v,});
+      this.v, 
+      this.paymentId,});
 
   BookingDetails.fromJson(dynamic json) {
     id = json['_id'];
@@ -170,6 +206,7 @@ class BookingDetails {
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     v = json['__v'];
+    paymentId = json['paymentId'];
   }
   String? id;
   String? bname;
@@ -178,12 +215,13 @@ class BookingDetails {
   String? bsize;
   String? baddress;
   String? baddressh;
-  dynamic driver;
+  String? driver;
   String? status;
   List<CustomerDrivers>? customerDrivers;
   String? createdAt;
   String? updatedAt;
   int? v;
+  String? paymentId;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -202,6 +240,7 @@ class BookingDetails {
     map['createdAt'] = createdAt;
     map['updatedAt'] = updatedAt;
     map['__v'] = v;
+    map['paymentId'] = paymentId;
     return map;
   }
 

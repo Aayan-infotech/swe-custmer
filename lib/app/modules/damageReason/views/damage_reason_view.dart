@@ -44,7 +44,7 @@ class DamageReasonView extends GetView<DamageReasonController> {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: CommonText.extraBold(
-                      "${controller.cartName.value}/${controller.cartId.value}",
+                      "${controller.cartName.value}",
                       size: 16,
                       color: shadow,
                     ).marginOnly(top: 8),

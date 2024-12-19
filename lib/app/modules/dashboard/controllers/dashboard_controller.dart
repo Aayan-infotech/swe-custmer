@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +14,7 @@ import 'package:southwaltoncarts_customer/app/utils/logger_utils.dart';
 import 'package:southwaltoncarts_customer/app/utils/shared_prefs.dart';
 import 'package:southwaltoncarts_customer/app/utils/strings.dart';
 import 'package:southwaltoncarts_customer/app/utils/utils.dart';
+import 'package:swipe_refresh/swipe_refresh.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../../network/response/LatestReservationResponse.dart';
@@ -21,6 +24,9 @@ class DashboardController extends GetxController
   GlobalKey<ScaffoldState> drawerKey = GlobalKey<ScaffoldState>();
 
   TextEditingController searchController = TextEditingController();
+  ScrollController scrollController = ScrollController();
+
+  final streamController = StreamController<SwipeRefreshState>.broadcast();
 
   final PageController pageController = PageController();
 
@@ -30,10 +36,14 @@ class DashboardController extends GetxController
 
   var isLoading = false.obs;
   var isReserveLoading = false.obs;
+  var isPageLoaderVisible = false.obs;
 
   var profileImage = SharedPrefs().userImage().obs;
   var userName = SharedPrefs().userName().obs;
   var userEmail = SharedPrefs().userEmail().obs;
+
+  var page = 1.obs;
+  var totalPage = 1;
 
   //Reservation
   var reservationData = LatestResData().obs;
@@ -43,7 +53,9 @@ class DashboardController extends GetxController
   var deliveryTime = "".obs;
   var pickUpTime = "".obs;
   var cartImg = "".obs;
+  var tagNumber = "".obs;
   var noReservation = false.obs;
+  Timer? debounceTimer;
 
   List<Map<String, String>> status = [
     {
@@ -69,8 +81,9 @@ class DashboardController extends GetxController
     SingleItemModel(title: Strings.damageReport, img: Assets.imagesDamage.path)
   ];
 
-  var historyList = RxList<HistoryData>();
-  var filteredList = RxList<HistoryData>();
+  var historyList = RxList<BookingData>();
+
+  // var filteredList = RxList<HistoryData>();
 
   @override
   void onInit() {
@@ -84,11 +97,8 @@ class DashboardController extends GetxController
   @override
   void onReady() {
     AppLoaderView.loader();
-
-    searchController.addListener(() {
-      searchHistory(searchController.text.trim());
-    });
-
+    scrollController.addListener(getMoreData);
+    searchController.addListener(searchData);
     super.onReady();
   }
 
@@ -97,18 +107,23 @@ class DashboardController extends GetxController
     Get.offAllNamed(Routes.WELCOME);
   }
 
-  Future<void> getHistory() async {
-    var res = await DashRepo().getHistory();
+  Future<void> getHistory({int mPage = 1, String search = ""}) async {
+    var res = await DashRepo().getHistory(page: mPage, search: search);
 
     res.when(success: (value) {
       isLoading.value = false;
-      historyList.clear();
-      if (value.data?.isNotEmpty ?? false) {
-        value.data?.forEach((item) {
+      isPageLoaderVisible.value = false;
+      streamController.sink.add(SwipeRefreshState.hidden);
+      totalPage = value.data?.totalPages ?? 1;
+      if (mPage == 1) {
+        historyList.clear();
+      }
+      if (value.data?.data?.isNotEmpty ?? false) {
+        value.data?.data?.forEach((item) {
           historyList.add(item);
         });
       }
-      filteredList.assignAll(historyList);
+      // filteredList.assignAll(historyList);
     }, error: (error) {
       AppLoaderView.hideLoading();
       isLoading.value = false;
@@ -124,6 +139,7 @@ class DashboardController extends GetxController
       AppLoaderView.hideLoading();
       if (value.data != null) {
         cartName.value = value.data?.vehicleDetails?.vname ?? "";
+        tagNumber.value = value.data?.vehicleDetails?.tagNumber ?? "";
         bookingId.value = value.data?.reservationDetails?.id ?? "";
         if (value.data?.vehicleDetails?.image?.first.isNotEmpty ?? false) {
           cartImg.value = value.data?.vehicleDetails?.image?.first ?? "";
@@ -153,7 +169,7 @@ class DashboardController extends GetxController
       final directory = await getTemporaryDirectory();
       final filePath = "${directory.path}/temp.pdf";
 
-      await Dio().download(
+      var res = await Dio().download(
         "${ApiEndpoints.invoice}/$id",
         filePath,
         options: Options(responseType: ResponseType.bytes),
@@ -198,7 +214,6 @@ class DashboardController extends GetxController
       AppLoaderView.hideLoading();
       Get.toNamed(Routes.PDF_VIEWER,
           arguments: {"file": filePath, "title": "Agreement"});
-
       return filePath;
     } catch (e) {
       AppLoaderView.hideLoading();
@@ -206,19 +221,51 @@ class DashboardController extends GetxController
     }
   }
 
-  void searchHistory(String query) {
-    if (query.isEmpty) {
-      filteredList.assignAll(historyList);
-    } else {
-      filteredList.assignAll(
-        historyList.where(
-          (item) =>
-              item.reservationDetails?.vehicleDetails?.vname
-                  ?.toLowerCase()
-                  .contains(query.toLowerCase()) ??
-              false, // Explicitly handle null by returning false
-        ),
-      );
+  void onRefresh() {
+    page.value = 1;
+    getHistory(mPage: page.value);
+  }
+
+  void getMoreData() {
+    if (scrollController.position.atEdge &&
+        scrollController.position.pixels != 0) {
+      if (!isLoading.value && page.value < totalPage) {
+        isPageLoaderVisible.value = true;
+        page.value++;
+        getHistory(mPage: page.value);
+      } else {
+        isPageLoaderVisible.value = false;
+      }
     }
+  }
+
+  // void searchData() {
+  //   isLoading.value = true;
+  //   page.value = 1;
+  //
+  //   if (searchController.text.isEmpty) {
+  //     resetData();
+  //   } else {
+  //     getHistory(mPage: page.value, search: searchController.text);
+  //   }
+  // }
+  void searchData() {
+    if (debounceTimer?.isActive ?? false) debounceTimer!.cancel();
+    debounceTimer = Timer(const Duration(milliseconds: 500), () {
+      isLoading.value = true;
+      page.value = 1;
+
+      if (searchController.text.isEmpty) {
+        resetData();
+      } else {
+        getHistory(mPage: page.value, search: searchController.text);
+      }
+    });
+  }
+
+// Reset to default data
+  void resetData() {
+    historyList.clear();
+    getHistory(mPage: page.value, search: "");
   }
 }

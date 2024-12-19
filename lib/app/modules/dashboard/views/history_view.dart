@@ -7,6 +7,7 @@ import 'package:southwaltoncarts_customer/app/utils/common_text_view.dart';
 import 'package:southwaltoncarts_customer/app/utils/strings.dart';
 import 'package:southwaltoncarts_customer/app/widget/shimmer.dart';
 import 'package:southwaltoncarts_customer/app/widget/widgets.dart';
+import 'package:swipe_refresh/swipe_refresh.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../../utils/common_images.dart';
@@ -57,28 +58,6 @@ class HistoryView extends GetView<DashboardController> {
                         ),
                       ),
                     ),
-                    // SizedBox(
-                    //   width: context.width * 0.3,
-                    //   height: context.height * 0.08,
-                    //   child: CommonTextField(
-                    //     controller: controller.searchController,
-                    //     hintText: Strings.filter,
-                    //     isBoxView: true,
-                    //     isReadOnly: true,
-                    //     bgColor: onPrimary,
-                    //     prefix: const Padding(
-                    //       padding: EdgeInsets.symmetric(horizontal: 4),
-                    //     ),
-                    //     suffixIcon: const Padding(
-                    //       padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    //       child: SquareSvgImageFromAsset(
-                    //         Assets.svgIcFilter,
-                    //         color: shadow,
-                    //         size: 20,
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
                 SizedBox(
@@ -86,159 +65,183 @@ class HistoryView extends GetView<DashboardController> {
                 ),
                 Expanded(
                   child: Obx(() {
-                    return Visibility(
-                        visible: !controller.isLoading.value,
-                        replacement: historyShimmerLayout(context),
-                        child: controller.filteredList.isNotEmpty
-                            ? ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: controller.filteredList.length,
-                                itemBuilder: (context, index) {
-                                  var item = controller.filteredList[index];
-                                  var formattedDate = formatPickupAndDropDates(
-                                      pickup:
-                                          item.reservationDetails?.pickdate ??
-                                              "",
-                                      drop: item.reservationDetails?.dropdate ??
-                                          "");
-                                  return Stack(
-                                    clipBehavior: Clip.none,
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.all(8),
-                                        decoration: BoxDecoration(
-                                            color: onPrimary,
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            SizedBox(
-                                              width: context.width * 0.01,
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                CommonText.semiBold(
-                                                  item
-                                                          .reservationDetails
-                                                          ?.vehicleDetails
-                                                          ?.vname ??
-                                                      "",
-                                                  size: 16,
-                                                  color: shadow,
-                                                ),
-                                                SizedBox(
-                                                  height:
-                                                      context.height * 0.005,
-                                                ),
-                                                CommonText(
-                                                  formattedDate,
-                                                  size: 14,
-                                                  color: outlineVariant,
-                                                  fontWeight: FontWeight.w300,
-                                                )
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    // buildStatusRow(item.bookingDetails?.status?.capitalizeFirst ?? ""),
-                                                  ],
-                                                ),
-                                                //  Row(
-                                                //   children: [
-                                                //     CommonText.semiBold(
-                                                //       item.bookingDetails?.status?.capitalize??"",
-                                                //       size: 16,
-                                                //       color: success,
-                                                //     ),
-                                                //     SquareSvgImageFromAsset(
-                                                //
-                                                //     ),
-                                                //   ],
-                                                // ),
-                                                SizedBox(
-                                                  height:
-                                                      context.height * 0.005,
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    CommonText.bold(
-                                                      "\$${item.amount}",
-                                                      size: 16,
-                                                      color: shadow,
-                                                    ),
-                                                    SizedBox(
-                                                      width:
-                                                          context.width * 0.02,
-                                                    ),
-                                                    // Container(
-                                                    //   padding:
-                                                    //       const EdgeInsets.only(
-                                                    //           left: 8,
-                                                    //           right: 8,
-                                                    //           top: 4,
-                                                    //           bottom: 4),
-                                                    //   decoration: BoxDecoration(
-                                                    //       color: primary,
-                                                    //       borderRadius:
-                                                    //           BorderRadius
-                                                    //               .circular(8)),
-                                                    //   child: Row(
-                                                    //     mainAxisAlignment:
-                                                    //         MainAxisAlignment
-                                                    //             .spaceBetween,
-                                                    //     children: [
-                                                    //       SquareSvgImageFromAsset(
-                                                    //         Assets.svgIcReload
-                                                    //             .path,
-                                                    //         size: 14,
-                                                    //       ),
-                                                    //       SizedBox(
-                                                    //         width:
-                                                    //             context.width *
-                                                    //                 0.01,
-                                                    //       ),
-                                                    //       const CommonText.bold(
-                                                    //         Strings.reBook,
-                                                    //         size: 10,
-                                                    //         color: shadow,
-                                                    //       ),
-                                                    //     ],
-                                                    //   ),
-                                                    // ),
-                                                  ],
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ).paddingSymmetric(horizontal: 16),
-                                      Positioned(
-                                          top: context.height * 0.018,
-                                          left: 0,
-                                          child: SizedBox(
-                                              width: context.width * 0.16,
-                                              height: context.height * 0.06,
-                                              child: SquareImageFromNetwork(
-                                                imageUrl: item
-                                                        .reservationDetails
-                                                        ?.vehicleDetails
-                                                        ?.image
-                                                        ?.first ??
+                    return SwipeRefresh.adaptive(
+                      stateStream: controller.streamController.stream,
+                      onRefresh: () => controller.onRefresh(),
+                      scrollController: controller.scrollController,
+                      children: [
+                        SingleChildScrollView(
+                          child: Visibility(
+                              visible: !controller.isLoading.value,
+                              replacement: historyShimmerLayout(context),
+                              child: controller.historyList.isNotEmpty
+                                  ? ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount: controller.historyList.length,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      itemBuilder: (context, index) {
+                                        var item =
+                                            controller.historyList[index];
+                                        var formattedDate =
+                                            formatPickupAndDropDates(
+                                                pickup: item.reservationDetails
+                                                        ?.pickdate ??
                                                     "",
-                                                fit: BoxFit.fill,
-                                              )))
-                                    ],
-                                  ).paddingOnly(bottom: index == 9 ? 0 : 16);
-                                },
-                              )
-                            : noDataView(
-                                title: "No reservation history found!"));
+                                                drop: item.reservationDetails
+                                                        ?.dropdate ??
+                                                    "");
+                                        return Stack(
+                                          clipBehavior: Clip.none,
+                                          children: [
+                                            Container(
+                                              padding: const EdgeInsets.all(8),
+                                              decoration: BoxDecoration(
+                                                  color: onPrimary,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  SizedBox(
+                                                    width: context.width * 0.01,
+                                                  ),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      CommonText.semiBold(
+                                                        item
+                                                                .reservationDetails
+                                                                ?.vehicleDetails
+                                                                ?.vname ??
+                                                            "",
+                                                        size: 16,
+                                                        color: shadow,
+                                                      ),
+                                                      SizedBox(
+                                                        height: context.height *
+                                                            0.005,
+                                                      ),
+                                                      CommonText(
+                                                        formattedDate,
+                                                        size: 14,
+                                                        color: outlineVariant,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      )
+                                                    ],
+                                                  ),
+                                                  Column(
+                                                    children: [
+                                                      Row(
+                                                        children: [
+                                                          // buildStatusRow(item.bookingDetails?.status?.capitalizeFirst ?? ""),
+                                                        ],
+                                                      ),
+                                                      //  Row(
+                                                      //   children: [
+                                                      //     CommonText.semiBold(
+                                                      //       item.bookingDetails?.status?.capitalize??"",
+                                                      //       size: 16,
+                                                      //       color: success,
+                                                      //     ),
+                                                      //     SquareSvgImageFromAsset(
+                                                      //
+                                                      //     ),
+                                                      //   ],
+                                                      // ),
+                                                      SizedBox(
+                                                        height: context.height *
+                                                            0.005,
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          CommonText.bold(
+                                                            "\$${item.amount}",
+                                                            size: 16,
+                                                            color: shadow,
+                                                          ),
+                                                          SizedBox(
+                                                            width:
+                                                                context.width *
+                                                                    0.02,
+                                                          ),
+                                                          // Container(
+                                                          //   padding:
+                                                          //       const EdgeInsets.only(
+                                                          //           left: 8,
+                                                          //           right: 8,
+                                                          //           top: 4,
+                                                          //           bottom: 4),
+                                                          //   decoration: BoxDecoration(
+                                                          //       color: primary,
+                                                          //       borderRadius:
+                                                          //           BorderRadius
+                                                          //               .circular(8)),
+                                                          //   child: Row(
+                                                          //     mainAxisAlignment:
+                                                          //         MainAxisAlignment
+                                                          //             .spaceBetween,
+                                                          //     children: [
+                                                          //       SquareSvgImageFromAsset(
+                                                          //         Assets.svgIcReload
+                                                          //             .path,
+                                                          //         size: 14,
+                                                          //       ),
+                                                          //       SizedBox(
+                                                          //         width:
+                                                          //             context.width *
+                                                          //                 0.01,
+                                                          //       ),
+                                                          //       const CommonText.bold(
+                                                          //         Strings.reBook,
+                                                          //         size: 10,
+                                                          //         color: shadow,
+                                                          //       ),
+                                                          //     ],
+                                                          //   ),
+                                                          // ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
+                                            ).paddingSymmetric(horizontal: 16),
+                                            Positioned(
+                                                left: 0,
+                                                child: SizedBox(
+                                                    width: context.width * 0.16,
+                                                    height:
+                                                        context.height * 0.06,
+                                                    child:
+                                                        SquareImageFromNetwork(
+                                                      imageUrl: item
+                                                              .reservationDetails
+                                                              ?.vehicleDetails
+                                                              ?.image
+                                                              ?.first ??
+                                                          "",
+                                                      fit: BoxFit.fill,
+                                                    )))
+                                          ],
+                                        ).paddingOnly(
+                                            bottom: index == 9 ? 0 : 16);
+                                      },
+                                    )
+                                  : noDataView(
+                                      title: "No reservation history found!")),
+                        ),
+                        Visibility(
+                            visible: controller.isPageLoaderVisible.value,
+                            child: pageLoader(context))
+                      ],
+                    );
                   }),
                 )
               ],

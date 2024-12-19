@@ -39,6 +39,7 @@ class DamageReasonController extends GetxController {
   var reservationData = LatestResData().obs;
   var cartName = "".obs;
   var cartId = "".obs;
+  var tagNumber = "".obs;
   var paymentId = "".obs;
   var cartImg = "".obs;
   var pDate = "".obs;
@@ -72,8 +73,10 @@ var des = "";
       AppLoaderView.hideLoading();
       if (value.data != null) {
         cartName.value = value.data?.vehicleDetails?.vname ?? "";
+       // tagNumber.value = value.data?.vehicleDetails?.tagNumber ?? "";
         cartId.value = value.data?.vehicleDetails?.id ?? "";
-        tagController.text = value.data?.reservationDetails?.id ?? "";
+        // tagController.text = value.data?.reservationDetails?.id ?? "";
+        tagController.text = value.data?.vehicleDetails?.tagNumber ?? "";
         paymentId.value = value.data?.payment?.id ?? "";
         if (value.data?.vehicleDetails?.image?.first.isNotEmpty ?? false) {
           cartImg.value = value.data?.vehicleDetails?.image?.first ?? "";

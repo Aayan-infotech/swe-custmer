@@ -346,7 +346,9 @@ class HomeView extends GetView<DashboardController> {
                               Get.toNamed(Routes.DRIVER_DETAIL);
                               break;
                             case 2:
-                              Get.toNamed(Routes.DAMAGE_REPORT);
+                              Get.toNamed(Routes.DAMAGE_REPORT,arguments: {
+                                "tag":controller.tagNumber.value
+                              });
                               break;
                             default:
                               break;

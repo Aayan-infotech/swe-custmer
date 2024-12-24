@@ -16,6 +16,16 @@ class DamageReportController extends GetxController {
 
   var imageList = RxList<File>();
 
+  var tagNumber ="";
+
+
+  @override
+  void onInit() {
+    tagNumber = Get.arguments['tag'];
+    super.onInit();
+
+
+  }
 
   Future<void> cameraPicker() async {
     pickedImage.value.value = await ImagePick.getImageFromCamera();

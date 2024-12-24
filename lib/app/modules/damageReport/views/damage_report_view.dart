@@ -192,26 +192,26 @@ class DamageReportView extends GetView<DamageReportController> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const CommonText.extraBold(
-            Strings.cartNumber,
+           CommonText.extraBold(
+            controller.tagNumber,
             size: 16,
             color: shadow,
           ),
-          GestureDetector(
-            onTap: () {
-              NativeCallService.makePhoneCall("+1 850-797-0284");
-            },
-            child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                decoration: BoxDecoration(
-                    color: error, borderRadius: BorderRadius.circular(4)),
-                child: const CommonText.bold(
-                  Strings.emergencyContact,
-                  size: 12,
-                  color: onPrimary,
-                )),
-          ),
+          // GestureDetector(
+          //   onTap: () {
+          //     NativeCallService.makePhoneCall("+1 850-797-0284");
+          //   },
+          //   child: Container(
+          //       padding:
+          //           const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+          //       decoration: BoxDecoration(
+          //           color: error, borderRadius: BorderRadius.circular(4)),
+          //       child: const CommonText.bold(
+          //         Strings.emergencyContact,
+          //         size: 12,
+          //         color: onPrimary,
+          //       )),
+          // ),
         ],
       ).marginOnly(top: 16),
     );

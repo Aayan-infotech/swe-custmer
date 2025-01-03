@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:southwaltoncarts_customer/app/routes/app_pages.dart';
 import 'package:southwaltoncarts_customer/app/widget/shimmer.dart';
 import 'package:southwaltoncarts_customer/app/widget/widgets.dart';
+import 'package:swipe_refresh/swipe_refresh.dart';
 
 import '../../../../generated/assets.dart';
 import '../../../theme/theme.dart';
@@ -28,73 +29,79 @@ class ReservationView extends GetView<DashboardController> {
       child: SizedBox(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                /*Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: SwipeRefresh.adaptive(
+            stateStream: controller.streamController.stream,
+            onRefresh: () => controller.onRefresh(),
+            children: [
+              SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      width: context.width * 0.6,
-                      height: context.height * 0.08,
-                      child: CommonTextField(
-                        controller: controller.searchController,
-                        hintText: Strings.search,
-                        isBoxView: true,
-                        bgColor: onPrimary,
-                        prefix: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 4),
-                        ),
-                        suffixIcon: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
-                          child: SquareSvgImageFromAsset(
-                            Assets.svgIcSearch,
-                            color: shadow,
-                            size: 24,
+                    /*Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: context.width * 0.6,
+                          height: context.height * 0.08,
+                          child: CommonTextField(
+                            controller: controller.searchController,
+                            hintText: Strings.search,
+                            isBoxView: true,
+                            bgColor: onPrimary,
+                            prefix: const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 4),
+                            ),
+                            suffixIcon: const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.0),
+                              child: SquareSvgImageFromAsset(
+                                Assets.svgIcSearch,
+                                color: shadow,
+                                size: 24,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: context.width * 0.3,
-                      height: context.height * 0.08,
-                      child: CommonTextField(
-                        controller: controller.searchController,
-                        hintText: Strings.filter,
-                        isBoxView: true,
-                        isReadOnly: true,
-                        bgColor: onPrimary,
-                        prefix: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 4),
-                        ),
-                        suffixIcon: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
-                          child: SquareSvgImageFromAsset(
-                            Assets.svgIcFilter,
-                            color: shadow,
-                            size: 20,
+                        SizedBox(
+                          width: context.width * 0.3,
+                          height: context.height * 0.08,
+                          child: CommonTextField(
+                            controller: controller.searchController,
+                            hintText: Strings.filter,
+                            isBoxView: true,
+                            isReadOnly: true,
+                            bgColor: onPrimary,
+                            prefix: const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 4),
+                            ),
+                            suffixIcon: const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.0),
+                              child: SquareSvgImageFromAsset(
+                                Assets.svgIcFilter,
+                                color: shadow,
+                                size: 20,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ],
-                ),*/
+                      ],
+                    ),*/
 
-                Obx(() {
-                  return Visibility(
-                      visible: !controller.isReserveLoading.value,
-                      replacement: reservationShimmerView(context),
-                      child: controller.noReservation.value
-                          ? SizedBox(
-                              height: context.height * 0.8,
-                              child:
-                                  noDataView(title: "No reservations found!"))
-                          : _contentView(context));
-                })
-              ],
-            ),
+                    Obx(() {
+                      return Visibility(
+                          visible: !controller.isReserveLoading.value,
+                          replacement: reservationShimmerView(context),
+                          child: controller.noReservation.value
+                              ? SizedBox(
+                                  height: context.height * 0.8,
+                                  child:
+                                      noDataView(title: "No reservations found!"))
+                              : _contentView(context));
+                    })
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -226,7 +233,7 @@ class ReservationView extends GetView<DashboardController> {
                         decoration: BoxDecoration(
                             color: primary,
                             borderRadius: BorderRadius.circular(8)),
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             controller.getAgreement();
                           },
@@ -254,7 +261,7 @@ class ReservationView extends GetView<DashboardController> {
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                             color: blue, borderRadius: BorderRadius.circular(8)),
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             controller.fetchAndSavePdf(controller.transId.value);
                           },

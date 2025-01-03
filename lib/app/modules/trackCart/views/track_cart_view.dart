@@ -78,13 +78,16 @@ class TrackCartView extends GetView<TrackCartController> {
                       lineXY: 0.1,
                       isFirst: true,
                       afterLineStyle: LineStyle(
-                        color: controller.status.value == "PENDING"
+                        color: (controller.status.value == "PENDING" ||
+                                controller.status.value == "DELIVERED" ||
+                                controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
                       indicatorStyle: IndicatorStyle(
                         width: 20,
-                        color: controller.status.value == "PENDING"
+                        color: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                         padding: const EdgeInsets.all(6),
@@ -94,18 +97,24 @@ class TrackCartView extends GetView<TrackCartController> {
                         asset: Assets.svgIcBookingFile,
                         title: Strings.bookingPlaced,
                         message: Strings.weHaveReceivedYourBooking,
-                        iconClr: controller.status.value == "PENDING"
+                        iconClr: (controller.status.value == "PENDING" ||
+                            controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
-                        titleClr: controller.status.value == "PENDING"
+                        titleClr: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
-                        msgClr: controller.status.value == "PENDING"
+                        msgClr: (controller.status.value == "PENDING" ||
+                            controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
                       beforeLineStyle: LineStyle(
-                        color: controller.status.value == "PENDING"
+                        color: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
@@ -115,18 +124,21 @@ class TrackCartView extends GetView<TrackCartController> {
                       lineXY: 0.1,
                       indicatorStyle: IndicatorStyle(
                         width: 20,
-                        color: controller.status.value == "PENDING"
+                        color: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                         padding: const EdgeInsets.all(6),
                       ),
                       beforeLineStyle: LineStyle(
-                        color: controller.status.value == "PENDING"
+                        color: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
                       afterLineStyle: LineStyle(
-                        color: controller.status.value == "PENDING"
+                        color: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
@@ -135,13 +147,16 @@ class TrackCartView extends GetView<TrackCartController> {
                         asset: Assets.svgIcConfirmCheck,
                         title: Strings.bookingConfirmed,
                         message: Strings.youBookingHasBeenConfirmed,
-                        iconClr: controller.status.value == "PENDING"
+                        iconClr: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
-                        titleClr: controller.status.value == "PENDING"
+                        titleClr: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
-                        msgClr: controller.status.value == "PENDING"
+                        msgClr: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
@@ -151,18 +166,21 @@ class TrackCartView extends GetView<TrackCartController> {
                       lineXY: 0.1,
                       indicatorStyle: IndicatorStyle(
                         width: 20,
-                        color: controller.status.value == "PENDING"
+                        color: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                         padding: const EdgeInsets.all(6),
                       ),
                       beforeLineStyle: LineStyle(
-                        color: controller.status.value == "PENDING"
+                        color: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
                       afterLineStyle: LineStyle(
-                        color: controller.status.value == "PENDING"
+                        color: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
@@ -171,13 +189,17 @@ class TrackCartView extends GetView<TrackCartController> {
                         asset: Assets.svgIcLocMarker,
                         title: Strings.onTheWay,
                         message: Strings.weAreOnTheWayToDeliver,
-                        iconClr: controller.status.value == "PENDING"
+                        iconClr: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
-                        titleClr: controller.status.value == "PENDING"
+                        titleClr: ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
-                        msgClr: controller.status.value == "PENDING"
+                        msgClr:
+                          ( controller.status.value == "PENDING"||controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
@@ -186,18 +208,21 @@ class TrackCartView extends GetView<TrackCartController> {
                       alignment: TimelineAlign.manual,
                       lineXY: 0.1,
                       beforeLineStyle: LineStyle(
-                        color: controller.status.value == "DELIVERED"
+                        color: (controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
                       afterLineStyle: LineStyle(
-                        color: controller.status.value == "DELIVERED"
+                        color: (controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),
                       indicatorStyle: IndicatorStyle(
                         width: 20,
-                        color: controller.status.value == "DELIVERED"
+                        color: (controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                         // Highlight or disable based on status
@@ -208,13 +233,16 @@ class TrackCartView extends GetView<TrackCartController> {
                         asset: Assets.svgIcConfirmCheck,
                         title: Strings.delivered,
                         message: Strings.weDeliveredTheCart,
-                        iconClr: controller.status.value == "DELIVERED"
+                        iconClr: (controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
-                        titleClr: controller.status.value == "DELIVERED"
+                        titleClr: (controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
-                        msgClr: controller.status.value == "DELIVERED"
+                        msgClr: (controller.status.value == "DELIVERED" ||
+                            controller.status.value == "COMPLETED")
                             ? primary
                             : onSurface.withOpacity(0.6),
                       ),

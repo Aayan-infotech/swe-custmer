@@ -137,6 +137,7 @@ class DashboardController extends GetxController
       isReserveLoading.value = false;
       noReservation.value = false;
       AppLoaderView.hideLoading();
+      streamController.sink.add(SwipeRefreshState.hidden);
       if (value.data != null) {
         cartName.value = value.data?.vehicleDetails?.vname ?? "";
         tagNumber.value = value.data?.vehicleDetails?.tagNumber ?? "";
@@ -158,6 +159,7 @@ class DashboardController extends GetxController
     }, error: (error) {
       isReserveLoading.value = false;
       AppLoaderView.hideLoading();
+      streamController.sink.add(SwipeRefreshState.hidden);
       noReservation.value = true;
     });
   }
@@ -223,7 +225,9 @@ class DashboardController extends GetxController
 
   void onRefresh() {
     page.value = 1;
+    isReserveLoading.value = true;
     getHistory(mPage: page.value);
+    getReservation();
   }
 
   void getMoreData() {

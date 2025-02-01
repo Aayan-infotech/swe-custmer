@@ -217,6 +217,8 @@ class DamageReportView extends GetView<DamageReportController> {
     );
   }
 
+
+
   Widget _content(BuildContext context) {
     return Column(
       children: [
